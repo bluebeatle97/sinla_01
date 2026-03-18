@@ -1,0 +1,178 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* 공통 레이아웃 */
+.container {
+    width: 100%;
+    max-width: 1478px; /* main.png의 원본 가로 너비 기준 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 헤더 전체 */
+header {
+    background: #fff;
+    width: 100%;
+}
+
+/* 1. 상단 유틸 바 (높이 41px) */
+.header-top {
+    height: 41px;
+    background: #fff;
+    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+}
+
+.header-top .container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.util-menu {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #888;
+}
+
+/* 2. 헤더 네비 (높이 130px) */
+.header-nav {
+    height: 130px;
+    background: #fff;
+}
+
+.header-nav .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 로고 - 메뉴 - 우측 그룹 배치 */
+}
+
+/* 로고 (왼쪽) */
+.logo {
+    margin-right: 50px;
+}
+
+.logo img {
+    height: 40px; /* 로고 높이는 임의 조정 */
+}
+
+/* GNB 네비 메뉴 */
+.gnb {
+    flex: 1; /* 중앙 영역 차지 */
+}
+
+.gnb ul {
+    display: flex;
+    gap: 40px;
+}
+
+.gnb li a {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* 우측 그룹 (검색 + 아이콘) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 150px;
+}
+
+.btn-search {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* 메인 상품 리스트 (그리드 설정) */
+#main {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+/* 제이슨 파싱으로 들어올 상품 그리드 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 기본 4열 배치 */
+    gap: 30px;
+}
+
+/* 상품 박스 기본 스타일 */
+.product-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+/* 푸터 */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}

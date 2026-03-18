@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 메인 페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="header">
+        <!-- 헤더 탑 (높이 41px 예정) -->
+        <div class="header-top">
+            <div class="container">
+                <ul class="util-menu">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 헤더 네비 (높이 130px 예정) -->
+        <div class="header-nav">
+            <div class="container">
+                <!-- 왼쪽 로고 -->
+                <div class="logo">
+                    <a href="/"><img src="img/logo.png" alt="SHOP LOGO"></a>
+                </div>
+
+                <!-- 네비 메뉴 -->
+                <nav class="gnb">
+                    <ul>
+                        <li><a href="#">NEW</a></li>
+                        <li><a href="#">BEST</a></li>
+                        <li><a href="#">WOMEN</a></li>
+                        <li><a href="#">MEN</a></li>
+                        <li><a href="#">SALE</a></li>
+                    </ul>
+                </nav>
+
+                <!-- 오른쪽 검색창 및 아이콘 -->
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="검색">
+                        <button type="button" class="btn-search">🔍</button>
+                    </div>
+                    <div class="user-actions">
+                        <a href="#" class="btn-mypage">MY</a>
+                        <a href="#" class="btn-cart">CART (0)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 비주얼/히어로 섹션 -->
+    <section id="hero">
+        <div class="hero-image">
+            <!-- main.png의 상단 부분을 배경으로 활용 예정 -->
+        </div>
+    </section>
+
+    <!-- 상품 리스트 섹션 (JSON 파싱 영역) -->
+    <main id="main">
+        <div class="container">
+            <h2 class="section-title">New Arrivals</h2>
+            <div id="product-list" class="product-grid">
+                <!-- JS를 통해 JSON 데이터가 여기에 동적으로 삽입됩니다 -->
+                <p class="loading">상품을 불러오는 중입니다...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 영역 -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2026 Shopping Mall. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
