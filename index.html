@@ -1,84 +1,285 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰 메인 페이지</title>
+    <!-- 구글 폰트: Noto Sans KR 추가 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 폰트 어썸 CDN 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- 헤더 영역 -->
     <header id="header">
         <!-- 헤더 탑 (높이 41px 예정) -->
         <div class="header-top">
             <div class="container">
-                <ul class="util-menu">
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
+                <div class="contents-inner">
+                    <div class="exchange-rate">
+                        <span>오늘의 환율</span>
+                        <strong class="rate">$1=1,496.00원</strong>
+                    </div>
+                    <ul class="util-menu">
+                        <li><a href="#">Language <i class="fa-solid fa-chevron-down"
+                                    style="font-size: 8px; margin-left: 4px;"></i></a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">주문가능시간</a></li>
+                        <li><a href="#" class="btn-chat"><span>상담톡</span></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- 헤더 네비 (높이 130px 예정) -->
+        <!-- 헤더 네비 (높이 130px -> 스크롤 시 70px) -->
         <div class="header-nav">
             <div class="container">
-                <!-- 왼쪽 로고 -->
-                <div class="logo">
-                    <a href="/"><img src="img/logo.png" alt="SHOP LOGO"></a>
-                </div>
-
-                <!-- 네비 메뉴 -->
-                <nav class="gnb">
-                    <ul>
-                        <li><a href="#">NEW</a></li>
-                        <li><a href="#">BEST</a></li>
-                        <li><a href="#">WOMEN</a></li>
-                        <li><a href="#">MEN</a></li>
-                        <li><a href="#">SALE</a></li>
-                    </ul>
-                </nav>
-
-                <!-- 오른쪽 검색창 및 아이콘 -->
-                <div class="header-right">
-                    <div class="search-box">
-                        <input type="text" placeholder="검색">
-                        <button type="button" class="btn-search">🔍</button>
+                <div class="contents-inner">
+                    <!-- 왼쪽 로고 그룹 (동그라미 화살표 아이콘) -->
+                    <div class="logo-group">
+                        <div class="logo">
+                            <a href="/"><img src="img/logo.png" alt="SHOP LOGO"></a>
+                        </div>
+                        <div class="platform-selector">
+                            <button type="button" class="btn-platfrom">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <!-- 200*165px 플랫폼 메뉴 박스 -->
+                            <div class="platform-menu">
+                                <ul>
+                                    <li><a href="#">온라인 면세점</a></li>
+                                    <li><a href="#">오프라인 매장</a></li>
+                                    <li><a href="#">멤버십 안내</a></li>
+                                    <li><a href="#">이벤트/혜택</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="user-actions">
-                        <a href="#" class="btn-mypage">MY</a>
-                        <a href="#" class="btn-cart">CART (0)</a>
+
+                    <!-- 네비 메뉴 (화살표 아이콘) -->
+                    <nav class="gnb">
+                        <div class="gnb-group">
+                            <ul>
+                                <li class="menu-category">
+                                    <a href="#"><span>카테고리</span> <i class="fa-solid fa-chevron-down icon-sm"></i></a>
+                                    <!-- 4단 메가 메뉴 박스 -->
+                                    <div class="mega-menu">
+                                        <div class="mega-menu-inner">
+                                            <!-- 1단: 대분류 -->
+                                            <div class="depth1">
+                                                <ul>
+                                                    <li class="active"><a href="#"><span>스킨케어</span> <i
+                                                                class="fa-solid fa-chevron-right"></i></a></li>
+                                                    <li><a href="#"><span>메이크업</span></a></li>
+                                                    <li><a href="#"><span>향수/바디/헤어</span></a></li>
+                                                    <li><a href="#"><span>가방/신발/잡화</span></a></li>
+                                                    <li><a href="#"><span>시계/쥬얼리</span></a></li>
+                                                    <li><a href="#"><span>의류/아이웨어</span></a></li>
+                                                    <li><a href="#"><span>스포츠/레저</span></a></li>
+                                                    <li><a href="#"><span>디지털/리빙</span></a></li>
+                                                    <li><a href="#"><span>식품</span></a></li>
+                                                    <li><a href="#"><span>유아동</span></a></li>
+                                                    <li><a href="#"><span>남성관</span></a></li>
+                                                    <li><a href="#"><span>주류</span></a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- 2단: 중분류 -->
+                                            <div class="depth2">
+                                                <ul>
+                                                    <li class="active"><a href="#"><span>기초케어</span> <i
+                                                                class="fa-solid fa-chevron-right"></i></a></li>
+                                                    <li><a href="#"><span>선케어</span></a></li>
+                                                    <li><a href="#"><span>클렌징</span></a></li>
+                                                    <li><a href="#"><span>남성용</span></a></li>
+                                                    <li><a href="#"><span>뷰티디바이스</span></a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- 3단: 소분류 -->
+                                            <div class="depth3">
+                                                <ul>
+                                                    <li><a href="#">스킨/토너</a></li>
+                                                    <li><a href="#">로션</a></li>
+                                                    <li><a href="#">크림</a></li>
+                                                    <li><a href="#">에센스/페이스오일</a></li>
+                                                    <li><a href="#">미스트</a></li>
+                                                    <li><a href="#">팩/마스크팩</a></li>
+                                                    <li><a href="#">아이케어</a></li>
+                                                    <li><a href="#">립케어</a></li>
+                                                    <li><a href="#">스페셜 케어</a></li>
+                                                    <li><a href="#">피부관리용품</a></li>
+                                                    <li><a href="#">기초케어 세트</a></li>
+                                                </ul>
+                                            </div>
+                                            <!-- 4단: 우측 컨텐츠 -->
+                                            <div class="mega-right">
+                                                <!-- 프로모션 -->
+                                                <div class="promo-grid">
+                                                    <a href="#" class="promo-item">
+                                                        <img src="gemini/006.JPG"
+                                                            alt="신라주류관">
+                                                        <p>신라주류관</p>
+                                                    </a>
+                                                    <a href="#" class="promo-item">
+                                                        <img src="gemini/006.JPG"
+                                                            alt="트렌드-K">
+                                                        <p>트렌드-K</p>
+                                                    </a>
+                                                </div>
+                                                <!-- 럭셔리 뷰티 -->
+                                                <div class="luxury-beauty">
+                                                    <h3>럭셔리 뷰티</h3>
+                                                    <div class="brand-circles">
+                                                        <a href="#"><span class="circle bg-black">CHANEL</span></a>
+                                                        <a href="#"><img
+                                                                src="https://via.placeholder.com/60x60/000/fff?text=EL"
+                                                                class="circle" alt="ESTEE LAUDER"></a>
+                                                        <a href="#"><img
+                                                                src="https://via.placeholder.com/60x60/000/fff?text=LC"
+                                                                class="circle" alt="LANCOME"></a>
+                                                    </div>
+                                                </div>
+                                                <!-- 신라Only -->
+                                                <div class="shilla-only">
+                                                    <h3>신라Only <i class="fa-solid fa-chevron-right"
+                                                            style="font-size: 10px;"></i></h3>
+                                                    <div class="tag-grid">
+                                                        <a href="#" class="tag">LE PERSONA</a>
+                                                        <a href="#" class="tag">RBOW</a>
+                                                        <a href="#" class="tag">BEBELUA</a>
+                                                        <a href="#" class="tag">FELD APOTHEKE</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-brand"><a href="#"><span>브랜드</span> <i
+                                            class="fa-solid fa-chevron-down icon-sm"></i></a></li>
+                                <li><a href="#"><span>혜택</span></a></li>
+                                <li><a href="#"><span>세일</span></a></li>
+                                <li><a href="#"><span>랭킹</span></a></li>
+                                <li><a href="#"><span>3시간전</span></a></li>
+                                <li><a href="#"><span>신라부티크</span></a></li>
+                                <li><a href="#"><span>조 말론 런던</span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!-- 오른쪽 검색창 및 아이콘 (돋보기, 유저, 쇼핑백 아이콘) -->
+                    <div class="header-right">
+                        <div class="search-box">
+                            <input type="text" placeholder="젠틀몬스터 2026 신규 컬렉션">
+                            <button type="button" class="btn-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                        <div class="user-actions">
+                            <a href="#" class="btn-mypage"><i class="fa-regular fa-user"></i></a>
+                            <a href="#" class="btn-cart">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 메인 비주얼/히어로 섹션 -->
+    <!-- 메인 비주얼/히어로 슬라이더 섹션 -->
     <section id="hero">
-        <div class="hero-image">
-            <!-- main.png의 상단 부분을 배경으로 활용 예정 -->
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                <div class="slide active" style="background-image: url('main.png');">
+                    <div class="container">
+                        <div class="slide-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide"
+                    style="background-image: url('https://via.placeholder.com/1920x600/f0f0f0/333?text=Banner+02');">
+                </div>
+                <div class="slide"
+                    style="background-image: url('https://via.placeholder.com/1920x600/e0e0e0/333?text=Banner+03');">
+                </div>
+            </div>
+            <!-- 통합 슬라이더 컨트롤러 (180*50px) -->
+            <div class="container hero-control-container">
+                <div class="hero-controls">
+                    <button type="button" class="btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="slide-counter">
+                        <span class="current">1</span>
+                        <span class="total-group">/ <span class="total">20</span></span>
+                    </div>
+                    <button type="button" class="btn-pause"><i class="fa-solid fa-pause"></i></button>
+                    <button type="button" class="btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 상품 리스트 섹션 (JSON 파싱 영역) -->
+    <!-- 상품 리스트 섹션 -->
     <main id="main">
         <div class="container">
             <h2 class="section-title">New Arrivals</h2>
             <div id="product-list" class="product-grid">
-                <!-- JS를 통해 JSON 데이터가 여기에 동적으로 삽입됩니다 -->
-                <p class="loading">상품을 불러오는 중입니다...</p>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/001.JPG" alt="샘플">
+                        <span class="badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 01</p>
+                        <p class="product-price">39,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/002.JPG" alt="샘플">
+                        <span class="badge best">BEST</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 02</p>
+                        <p class="product-price">45,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/003.JPG" alt="샘플">
+                        <span class="badge sale">SALE</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 03</p>
+                        <p class="product-price">29,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/297x357" alt="샘플">
+                        <span class="badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 04</p>
+                        <p class="product-price">52,000원</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- 푸터 영역 -->
     <footer id="footer">
         <div class="container">
             <p>&copy; 2026 Shopping Mall. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

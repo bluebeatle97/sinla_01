@@ -6,9 +6,19 @@
 }
 
 body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'NotoSansBold';
+    font-weight: 700; /* 전체 노토 산스 볼드 적용 */
     line-height: 1.6;
-    color: #333;
+    color: #222222;
+    background: #fff;
+    overflow-x: auto;
+    min-width: 1280px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 폰트 두께 명시 (볼드 설정) */
+h1, h2, h3, h4, .gnb li a, .exchange-rate .rate, .btn-chat {
+    font-weight: 700;
 }
 
 a {
@@ -16,22 +26,21 @@ a {
     color: inherit;
 }
 
-ul {
+ul, li {
     list-style: none;
 }
 
-/* 공통 레이아웃 */
-.container {
+/* 페이지 전체 고정 레이아웃 */
+#header, #hero, #main, #footer {
     width: 100%;
-    max-width: 1478px; /* main.png의 원본 가로 너비 기준 */
-    margin: 0 auto;
-    padding: 0 20px;
+    background: #fff;
+    position: relative;
 }
 
-/* 헤더 전체 */
-header {
-    background: #fff;
-    width: 100%;
+.container {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 /* 1. 상단 유틸 바 (높이 41px) */
@@ -39,96 +48,654 @@ header {
     height: 41px;
     background: #fff;
     border-bottom: 1px solid #f2f2f2;
-    display: flex;
-    align-items: center;
+    padding: 8px 0 7px; /* 상 8px, 하 7px 패딩으로 높이 41px 유지 (8+25+7+1(border)=41) */
 }
 
 .header-top .container {
+    width: 1280px;
+    height: 25px;
+    margin: 0 auto;
+}
+
+.header-top .contents-inner {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exchange-rate {
+    font-size: 12px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.exchange-rate .rate {
+    color: #e62a22; /* 빨간색 */
+    margin-left: 5px;
+    font-weight: 700;
 }
 
 .util-menu {
     display: flex;
-    gap: 15px;
+    align-items: center;
     font-size: 12px;
-    color: #888;
+    color: #222222; /* 회색에서 검은색으로 변경 */
+    font-weight: 500;
 }
 
-/* 2. 헤더 네비 (높이 130px) */
+.util-menu li {
+    display: flex;
+    align-items: center;
+}
+
+.util-menu li:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: #e0e0e0;
+    margin: 0 15px;
+}
+
+.btn-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 25px;
+    border: 0.5px solid #222222;
+    border-radius: 5px; /* 높이의 절반 정도로 둥글게 */
+    color: #222222;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+/* 2. 헤더 네비 (높이 130px -> 스크롤 시 70px) */
 .header-nav {
     height: 130px;
     background: #fff;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 더 부드러운 애니메이션 */
+    z-index: 1000;
+    position: relative; /* 기본 위치 */
+}
+
+/* 스크롤 시 고정 */
+header.fixed .header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* 더 세련된 그림자 */
+    border-bottom: 1px solid #eee;
+}
+
+header.fixed .logo img {
+    height: 34px; /* 로고 크기도 소폭 축소 */
+    width: auto;
+}
+
+header.fixed .gnb li a {
+    font-size: 16px; /* 폰트 크기도 살짝 조절 가능 */
+}
+
+/* 스크롤 시 헤더 상단바(top)를 가리기 위해 fixed 위치 조정 */
+header.fixed {
+    padding-top: 130px; /* 헤더 고정 시 본문 밀림 방지 */
 }
 
 .header-nav .container {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* 로고 - 메뉴 - 우측 그룹 배치 */
+    width: 1280px;
+    margin: 0 auto;
 }
 
-/* 로고 (왼쪽) */
-.logo {
-    margin-right: 50px;
+.header-nav .contents-inner {
+    height: 100%;
+    width: 1280px;
+    display: flex;
+    align-items: center;
+}
+
+/* 로고 그룹 */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 40px; /* 로고 높이는 임의 조정 */
+    width: 102px;
+    height: 44px; 
+    object-fit: contain;
+}
+
+.btn-platfrom {
+    background: none;
+    border: 1.5px solid #ccc; /* 선 두께 조정 */
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px; /* 내부 쉐브론 크기 */
+    color: #ccc;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.btn-platfrom:hover {
+    border-color: #222;
+    color: #222;
+}
+
+/* 플랫폼 메뉴 박스 스타일 */
+.platform-selector {
+    position: relative;
+}
+
+.platform-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: -102px;
+    width: 200px;
+    height: 165px;
+    background: #f5f5f5cc; /* 요청하신 배경색 */
+    border: 1px solid #000; /* 검정색 테두리 추가 */
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 20px;
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platform-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.platform-menu ul li {
+    margin-bottom: 12px;
+}
+
+.platform-menu ul li:last-child {
+    margin-bottom: 0;
+}
+
+.platform-menu ul li a {
+    font-size: 15px;
+    font-weight: 700;
+    color: #444;
+    transition: color 0.2s;
+}
+
+.platform-menu ul li a:hover {
+    color: #e62a22;
 }
 
 /* GNB 네비 메뉴 */
 .gnb {
-    flex: 1; /* 중앙 영역 차지 */
+    flex: 0 0 760px; /* 가로 크기 760px 고정 */
+    height: 100%;
+    margin-left: auto; /* 로고와 메뉴 사이 공간을 늘려 메뉴를 우측으로 밀어냄 */
+    margin-right: 30px; /* 서치박스와의 간격을 30px로 축소 */
+}
+
+.gnb-group {
+    width: 760px;
+    height: 100%;
+    display: flex;
+    padding-left: 53px;
+    align-items: center;
+    justify-content: center;
 }
 
 .gnb ul {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    gap: 0;
+    height: 100%; /* 높이를 100%로 채움 */
+}
+
+.gnb li {
+    height: 100%; /* li 높이도 100% */
 }
 
 .gnb li a {
-    font-size: 16px;
+    display: flex; /* block에서 flex로 변경하여 수직 중앙 정렬 */
+    align-items: center;
+    height: 100%; /* a 태그도 100%로 채워 빈 공간 제거 */
+    padding: 0 18px;
+    font-size: 18px;
     font-weight: 700;
-    color: #333;
+    color: #222222;
+    white-space: nowrap;
+    position: relative;
 }
 
-/* 우측 그룹 (검색 + 아이콘) */
+.gnb li a:hover {
+    color: #e62a22;
+}
+
+/* 메가 메뉴 박스 스타일 (900*600px) */
+.menu-category {
+    position: static; /* 넓은 메뉴를 위해 기준점을 해제 (필요시 container 기준으로 변경) */
+}
+
+.gnb-group {
+    position: relative; /* GNB 그룹을 기준으로 메가 메뉴 위치 잡기 */
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%; /* 네비바 바로 아래 */
+    left: 0; /* GNB 그룹 시작 위치 */
+    width: 900px;
+    height: 600px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-top: none;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    z-index: 1200;
+    display: none; /* 기본 숨김 */
+}
+
+.menu-category:hover .mega-menu {
+    display: block; /* 호버 시 노출 */
+}
+
+.mega-menu-inner {
+    display: flex;
+    height: 100%;
+}
+
+/* 공통 리스트 스타일 */
+.mega-menu-inner ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.mega-menu-inner ul li {
+    margin-bottom: 0;
+}
+
+.mega-menu-inner ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 25px 9px 20px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 500;
+}
+
+.mega-menu-inner ul li.active > a {
+    background: #f5f5f5; /* 활성화 시 회색 배경 */
+    font-weight: 700;
+    color: #222;
+}
+
+.mega-menu-inner ul li a i {
+    display: none; /* 기본 화살표 숨김 */
+    font-size: 10px;
+    color: #999;
+    margin-left: auto; /* 화살표를 우측 끝으로 */
+}
+
+.mega-menu-inner ul li.active > a i {
+    display: block; /* 활성화 시 화살표 노출 */
+}
+
+/* 1, 2, 3단: 가로 너비 200px 통일 */
+.depth1, .depth2, .depth3 {
+    width: 200px;
+    background: #fff;
+    border-right: 1px solid #eee;
+    padding: 0;
+    overflow-y: auto;
+}
+
+/* 각 카테고리 항목: 세로 40px 고정 */
+.mega-menu-inner ul li {
+    height: 40px;
+    width: 100%;
+}
+
+.mega-menu-inner ul li a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 500;
+}
+
+/* 4단: 우측 배너 영역 (300px 고정) */
+.mega-right {
+    width: 300px;
+    padding: 40px 0 0; /* 최상단 40px 간격 추가 */
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* 섹션 간 간격 소폭 확대 */
+}
+
+.mega-right h3 {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 12px;
+    padding: 0 25px; /* 타이틀 좌우 정렬 유지 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.mega-right h3 i {
+    font-size: 10px;
+    color: #999;
+}
+
+/* 4-1. 프로모션 썸네일 */
+.promo-grid {
+    display: flex;
+    gap: 15px;
+    padding: 0 25px;
+}
+
+.promo-item {
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.promo-item img {
+    width: 110px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 0px solid #000;
+    display: block;
+    margin-bottom: 0;
+}
+
+.promo-item p {
+    font-size: 13px;
+    text-align: center;
+    color: #222;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1; /* 행간 여백 제거 */
+    width: 100%;
+}
+/* 4-2. 럭셔리 뷰티 (원형 로고) */
+.brand-circles {
+    display: flex;
+    gap: 8px; /* 로고 사이 간격 */
+    padding: 0 25px; /* 좌측 정렬 유지 */
+}
+
+.brand-circles a {
+    padding: 0; /* GNB a 태그에서 상속된 18px 패딩 제거 */
+    display: flex;
+}
+
+.brand-circles .circle {
+    width: 66px; /* 66*66 사이즈 */
+    height: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #eee;
+    object-fit: cover;
+    background: #fff;
+}
+
+.circle.bg-black { background: #000; }
+
+/* 4-3. 신라Only (타원형 태그) */
+.tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    padding: 0 25px;
+}
+
+.tag {
+    display: inline-block;
+    width: 110px; /* 110 사이즈 */
+    height: 40px; /* 40 사이즈 */
+    border: none; /* 테두리 제거 */
+    border-radius: 30px; /* 더 둥글게 */
+    font-size: 12px;
+    color: #444;
+    background: #f2f2f2; /* 테두리 대신 배경색으로 구분 */
+    white-space: nowrap;
+}
+
+.icon-sm {
+    font-size: 9px;
+    margin-left: 4px;
+    color: #666;
+}
+
+/* 우측 그룹 */
 .header-right {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
+    flex-shrink: 0;
 }
 
 .search-box {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #333;
-    padding-bottom: 5px;
+    width: 260px;
+    height: 40px;
+    padding: 0 45px 0 10px;
+    border-bottom: 2px solid #222222;
+    position: relative;
 }
 
 .search-box input {
     border: none;
     outline: none;
-    font-size: 14px;
-    width: 150px;
+    font-size: 15px;
+    width: 100%;
+    color: #ccc;
+    padding: 0 45px 0 10px;
 }
 
 .btn-search {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 22px; /* 돋보기 아이콘 22*22px */
+    color: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-actions {
     display: flex;
-    gap: 20px;
-    font-size: 14px;
-    font-weight: 700;
+    align-items: center;
+    gap: 12px;
 }
 
-/* 메인 상품 리스트 (그리드 설정) */
+
+.user-actions a {
+    font-size: 26px; /* 맨 오른쪽 두 아이콘 26*26px */
+    color: #222222;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cart .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #e62a22;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. 메인 비주얼/히어로 슬라이더 섹션 */
+#hero {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    background: #f9f9f9;
+}
+
+.slider-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    min-width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none; /* 기본적으로 숨김 */
+}
+
+.slide.active {
+    display: block; /* 활성화된 슬라이드만 표시 */
+}
+
+/* 슬라이드 내 컨텐츠/버튼 스타일 */
+.slide .container {
+    position: relative;
+    height: 100%;
+}
+
+.slide-content {
+    position: absolute;
+    right: 43px; /* 1280px 기준 우측 여백 */
+    bottom: 60px; /* 하단 여백 */
+}
+
+.btn-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    background: #222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.btn-more:hover {
+    background: #444;
+}
+
+/* 통합 슬라이더 컨트롤러 스타일 */
+.hero-control-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    pointer-events: none; /* 컨테이너 자체는 클릭 무시 */
+    z-index: 20;
+}
+
+.hero-controls {
+    position: absolute;
+    right: 43px; /* 1280px 기준 우측 끝 */
+    bottom: 0;
+    width: 180px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 블랙 */
+    border-radius: 25px; /* 알약 형태 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    color: #fff;
+    pointer-events: auto; /* 내부 요소는 클릭 가능 */
+}
+
+.hero-controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.slide-counter {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.slide-counter .current {
+    color: #fff;
+    margin-right: 2px;
+}
+
+.slide-counter .total-group {
+    opacity: 0.5; /* / 20 부분에 투명도 적용 */
+    font-weight: 400; /* 총 페이지 수는 조금 더 얇게 하여 대비 효과 */
+}
+
+/* 기존 슬라이더 컨트롤 스타일 제거 */
+
+/* 메인 상품 리스트 */
 #main {
     padding: 80px 0;
 }
@@ -139,40 +706,81 @@ header {
     font-size: 2.5rem;
 }
 
-/* 제이슨 파싱으로 들어올 상품 그리드 */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 기본 4열 배치 */
-    gap: 30px;
+    grid-template-columns: repeat(4, 297.5px);
+    column-gap: 30px;
+    row-gap: 50px;
+    width: 1280px;
+    margin: 0 auto;
 }
 
-/* 상품 박스 기본 스타일 */
 .product-card {
+    width: 297.5px;
     border: 1px solid #f0f0f0;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.product-card img {
+.product-img {
+    position: relative;
+    width: 297.5px;
+    height: 357px;
+    overflow: hidden;
+}
+
+.product-img img {
     width: 100%;
-    aspect-ratio: 1/1.2;
+    height: 100%;
     object-fit: cover;
 }
 
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+}
+.badge.new { background: #ff5a5f; }
+.badge.best { background: #333; }
+.badge.sale { background: #007bff; }
+
 .product-info {
-    padding: 15px;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 10px;
+    height: 22px;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #111;
 }
 
 /* 푸터 */
 footer {
-    background: #333;
-    color: #fff;
     padding: 50px 0;
     text-align: center;
+    background: #333 !important;
+    color: #fff;
 }

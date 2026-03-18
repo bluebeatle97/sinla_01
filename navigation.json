@@ -1,0 +1,58 @@
+{
+  "navigation": [
+    {
+      "id": "skincare",
+      "name": "스킨케어",
+      "subCategories": [
+        {
+          "name": "기초케어",
+          "items": [
+            "스킨/토너",
+            "로션",
+            "크림",
+            "에센스/페이스오일",
+            "미스트",
+            "팩/마스크팩",
+            "아이케어",
+            "립케어",
+            "스페셜 케어",
+            "피부관리용품",
+            "기초케어 세트"
+          ]
+        },
+        { "name": "선케어", "items": [] },
+        { "name": "클렌징", "items": [] },
+        { "name": "남성용", "items": [] },
+        { "name": "뷰티디바이스", "items": [] }
+      ]
+    },
+    { "id": "makeup", "name": "메이크업", "subCategories": [] },
+    { "id": "perfume", "name": "향수/바디/헤어", "subCategories": [] },
+    { "id": "bags", "name": "가방/신발/잡화", "subCategories": [] },
+    { "id": "watch", "name": "시계/쥬얼리", "subCategories": [] },
+    { "id": "apparel", "name": "의류/아이웨어", "subCategories": [] },
+    { "id": "sports", "name": "스포츠/레저", "subCategories": [] },
+    { "id": "digital", "name": "디지털/리빙", "subCategories": [] },
+    { "id": "food", "name": "식품", "subCategories": [] },
+    { "id": "baby", "name": "유아동", "subCategories": [] },
+    { "id": "men", "name": "남성관", "subCategories": [] },
+    { "id": "liquor", "name": "주류", "subCategories": [] }
+  ],
+  "rightContent": {
+    "promotions": [
+      { "name": "신라주류관", "imageUrl": "https://via.placeholder.com/150x200?text=Promotion+01" },
+      { "name": "트렌드-K", "imageUrl": "https://via.placeholder.com/150x200?text=Promotion+02" }
+    ],
+    "luxuryBeauty": [
+      { "name": "CHANEL", "imageUrl": "https://via.placeholder.com/100x50?text=CHANEL" },
+      { "name": "ESTEE LAUDER", "imageUrl": "https://via.placeholder.com/100x50?text=ESTEE+LAUDER" },
+      { "name": "LANCOME", "imageUrl": "https://via.placeholder.com/100x50?text=LANCOME" }
+    ],
+    "shillaOnly": [
+      "LE PERSONA",
+      "RBOW",
+      "BEBELUA",
+      "FELD APOTHEKE"
+    ]
+  }
+}
