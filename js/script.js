@@ -56,50 +56,58 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let contentHtml = '';
             if (item.type === 'video') {
-                contentHtml = `<video src="${item.file}" muted loop playsinline></video>`;
+                contentHtml = `<video src="${item.file}" muted autoplay loop playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;"></video>`;
             } else {
                 slideDiv.style.backgroundImage = `url('${item.file}')`;
             }
 
-            // 텍스트 레이아웃 적용 (1280*600 패딩 영역 및 500*187 박스)
+            // 텍스트 레이아웃 적용 및 컬러 설정
             const titleHtml = item.title ? item.title.replace(/\n/g, '<br>') : '';
             const descHtml = item.content || '';
+            const textColor = item.textColor || '#000'; // 기본값 검정
 
             contentHtml += `
-                <div class="slide-text-wrap">
+                <div class="slide-text-wrap" style="color: ${textColor}">
                     <div class="slide-text-inner">
-                        <div class="slide-title">${titleHtml}</div>
-                        <div class="slide-desc">${descHtml}</div>
+                        <div class="slide-title" style="color: ${textColor}">${titleHtml}</div>
+                        <div class="slide-desc" style="color: ${textColor}">${descHtml}</div>
                     </div>
                 </div>
             `;
 
             slideDiv.innerHTML = contentHtml;
             sliderContainer.appendChild(slideDiv);
-            
-            // 첫 번째 비디오 자동 재생
-            if (index === 0 && item.type === 'video') {
-                slideDiv.querySelector('video').play();
-            }
         });
         slides = document.querySelectorAll('.slide');
+        
+        // 첫 번째 비디오가 있다면 명시적으로 다시 한번 재생 명령
+        const firstVideo = slides[0]?.querySelector('video');
+        if (firstVideo) {
+            firstVideo.play().catch(() => {
+                console.log("첫 비디오 자동재생 차단됨. 사용자 클릭 대기.");
+            });
+        }
     }
 
     function showSlide(n) {
         if(slides.length === 0) return;
         
-        // 이전 슬라이드 비디오 일시정지
-        const prevVideo = slides[currentSlide].querySelector('video');
-        if (prevVideo) prevVideo.pause();
+        // 모든 비디오 일시정지 및 현재 슬라이드 활성화
+        slides.forEach((slide, idx) => {
+            const video = slide.querySelector('video');
+            if (idx === (n + slides.length) % slides.length) {
+                slide.classList.add('active');
+                if (video) {
+                    video.currentTime = 0;
+                    video.play().catch(() => {});
+                }
+            } else {
+                slide.classList.remove('active');
+                if (video) video.pause();
+            }
+        });
 
-        slides[currentSlide].classList.remove('active');
         currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-        
-        // 현재 슬라이드 비디오 재생
-        const nextVideo = slides[currentSlide].querySelector('video');
-        if (nextVideo) nextVideo.play();
-
         if(currentText) currentText.textContent = currentSlide + 1;
     }
 
