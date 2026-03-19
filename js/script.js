@@ -335,4 +335,43 @@ document.addEventListener('DOMContentLoaded', function() {
             renderBrands(e.target.value);
         });
     }
+
+    // 4. 아이콘 슬라이더 관련 로직
+    const iconsList = document.querySelector('.icons-list');
+    const btnIconPrev = document.querySelector('#main-icons .btn-prev');
+    const btnIconNext = document.querySelector('#main-icons .btn-next');
+    let iconScrollPos = 0;
+
+    fetch('icons.json')
+        .then(response => response.json())
+        .then(data => {
+            renderIcons(data.icons);
+        });
+
+    function renderIcons(icons) {
+        if (!iconsList) return;
+        iconsList.innerHTML = icons.map(icon => `
+            <li class="icon-item">
+                <div class="icon-img">
+                    <img src="${icon.img}" alt="${icon.name}">
+                </div>
+                <span>${icon.name}</span>
+            </li>
+        `).join('');
+    }
+
+    if (btnIconNext) {
+        btnIconNext.addEventListener('click', () => {
+            const maxScroll = iconsList.scrollWidth - 1280;
+            iconScrollPos = Math.min(iconScrollPos + 300, maxScroll); // 300px씩 이동
+            iconsList.style.transform = `translateX(-${iconScrollPos}px)`;
+        });
+    }
+
+    if (btnIconPrev) {
+        btnIconPrev.addEventListener('click', () => {
+            iconScrollPos = Math.max(iconScrollPos - 300, 0);
+            iconsList.style.transform = `translateX(-${iconScrollPos}px)`;
+        });
+    }
 });
