@@ -8,27 +8,142 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 플랫폼 메뉴 토글
     const btnPlatform = document.querySelector('.btn-platfrom');
     const platformMenu = document.querySelector('.platform-menu');
 
-    btnPlatform.addEventListener('click', function(e) {
-        e.stopPropagation();
-        platformMenu.classList.toggle('active');
-    });
+    if (btnPlatform && platformMenu) {
+        btnPlatform.addEventListener('click', function(e) {
+            e.stopPropagation();
+            platformMenu.classList.toggle('active');
+        });
 
-    document.addEventListener('click', function(e) {
-        if (!platformMenu.contains(e.target) && e.target !== btnPlatform) {
-            platformMenu.classList.remove('active');
-        }
-    });
+        document.addEventListener('click', function(e) {
+            if (!platformMenu.contains(e.target) && e.target !== btnPlatform) {
+                platformMenu.classList.remove('active');
+            }
+        });
+    }
 
-    const slides = document.querySelectorAll('.slide');
+    // 메가 메뉴 및 슬라이더 컨테이너
+    const sliderContainer = document.querySelector('.slider-container');
     const currentText = document.querySelector('.slide-counter .current');
     const totalText = document.querySelector('.slide-counter .total');
     const btnPrev = document.querySelector('.btn-prev');
     const btnNext = document.querySelector('.btn-next');
     const btnPause = document.querySelector('.btn-pause');
     
+    let slides = [];
+    let currentSlide = 0;
+    let slideInterval;
+    let isPaused = false;
+
+    // 1. 슬라이더 데이터 가져오기 및 렌더링
+    fetch('slider.json')
+        .then(response => response.json())
+        .then(data => {
+            renderSlides(data.sliders);
+            if (totalText) totalText.textContent = data.sliders.length;
+            startSlide();
+        });
+
+    function renderSlides(sliderData) {
+        if (!sliderContainer) return;
+        sliderContainer.innerHTML = '';
+        sliderData.forEach((item, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = `slide ${index === 0 ? 'active' : ''}`;
+            
+            let contentHtml = '';
+            if (item.type === 'video') {
+                contentHtml = `<video src="${item.file}" muted loop playsinline></video>`;
+            } else {
+                slideDiv.style.backgroundImage = `url('${item.file}')`;
+            }
+
+            // 텍스트 레이아웃 적용 (1280*600 패딩 영역 및 500*187 박스)
+            const titleHtml = item.title ? item.title.replace(/\n/g, '<br>') : '';
+            const descHtml = item.content || '';
+
+            contentHtml += `
+                <div class="slide-text-wrap">
+                    <div class="slide-text-inner">
+                        <div class="slide-title">${titleHtml}</div>
+                        <div class="slide-desc">${descHtml}</div>
+                    </div>
+                </div>
+            `;
+
+            slideDiv.innerHTML = contentHtml;
+            sliderContainer.appendChild(slideDiv);
+            
+            // 첫 번째 비디오 자동 재생
+            if (index === 0 && item.type === 'video') {
+                slideDiv.querySelector('video').play();
+            }
+        });
+        slides = document.querySelectorAll('.slide');
+    }
+
+    function showSlide(n) {
+        if(slides.length === 0) return;
+        
+        // 이전 슬라이드 비디오 일시정지
+        const prevVideo = slides[currentSlide].querySelector('video');
+        if (prevVideo) prevVideo.pause();
+
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        
+        // 현재 슬라이드 비디오 재생
+        const nextVideo = slides[currentSlide].querySelector('video');
+        if (nextVideo) nextVideo.play();
+
+        if(currentText) currentText.textContent = currentSlide + 1;
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startSlide() {
+        if (!isPaused) {
+            slideInterval = setInterval(nextSlide, 5000); // 5초로 변경
+        }
+    }
+
+    function stopSlide() {
+        clearInterval(slideInterval);
+    }
+
+    if(btnNext) btnNext.addEventListener('click', () => {
+        nextSlide();
+        if (!isPaused) { stopSlide(); startSlide(); }
+    });
+
+    if(btnPrev) btnPrev.addEventListener('click', () => {
+        prevSlide();
+        if (!isPaused) { stopSlide(); startSlide(); }
+    });
+
+    if(btnPause) btnPause.addEventListener('click', () => {
+        isPaused = !isPaused;
+        const icon = btnPause.querySelector('i');
+        if (isPaused) {
+            stopSlide();
+            icon.classList.replace('fa-pause', 'fa-play');
+        } else {
+            startSlide();
+            icon.classList.replace('fa-play', 'fa-pause');
+        }
+    });
+
+    // 2. 카테고리/내비게이션 데이터 로드
     let navData = null;
     let rightContentData = null;
     const depth1Container = document.querySelector('.depth1 ul');
@@ -46,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     function renderDepth1() {
-        if(!depth1Container) return;
+        if(!depth1Container || !navData) return;
         depth1Container.innerHTML = '';
         navData.forEach((cat, index) => {
             const li = document.createElement('li');
@@ -116,9 +231,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>럭셔리 뷰티</h3>
                 <div class="brand-circles">
                     ${luxuryBeauty.map((brand, idx) => `
-                        <a href="#">
-                            <img src="${brand.imageUrl}" class="circle ${idx === 0 ? 'bg-black' : ''}" alt="${brand.name}">
-                        </a>
+                        <div class="brand-item">
+                            <a href="#">
+                                <img src="${brand.imageUrl}" class="circle ${idx === 0 ? 'bg-black' : ''}" alt="${brand.name}">
+                            </a>
+                            <p class="brand-name">${brand.name}</p>
+                        </div>
                     `).join('')}
                 </div>
             </div>
@@ -131,59 +249,82 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
     
-    let currentSlide = 0;
-    let slideInterval;
-    let isPaused = false;
+    // 3. 브랜드 메뉴 관련 로직
+    let brandData = null;
+    let currentSort = 'kor'; 
+    const brandListContainer = document.querySelector('.brand-list');
+    const brandIndexContainer = document.querySelector('.brand-index-nav');
+    const brandSearchInput = document.querySelector('.brand-search input');
+    const sortButtons = document.querySelectorAll('.sort-btn');
 
-    totalText.textContent = 20;
+    fetch('brand.json')
+        .then(response => response.json())
+        .then(data => {
+            brandData = data.brands;
+            renderBrands();
+        });
 
-    function showSlide(n) {
-        if(slides.length === 0) return;
-        slides.forEach(slide => slide.classList.remove('active'));
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-        if(currentText) currentText.textContent = currentSlide + 1;
-    }
+    function renderBrands(filter = '') {
+        if (!brandData || !brandListContainer) return;
+        brandListContainer.innerHTML = '';
+        brandIndexContainer.innerHTML = '';
 
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
+        const allKeys = Object.keys(brandData);
+        let targetKeys = [];
 
-    function prevSlide() {
-        showSlide(currentSlide - 1);
-    }
-
-    function startSlide() {
-        if (!isPaused) {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-    }
-
-    function stopSlide() {
-        clearInterval(slideInterval);
-    }
-
-    if(btnNext) btnNext.addEventListener('click', () => {
-        nextSlide();
-        if (!isPaused) { stopSlide(); startSlide(); }
-    });
-
-    if(btnPrev) btnPrev.addEventListener('click', () => {
-        prevSlide();
-        if (!isPaused) { stopSlide(); startSlide(); }
-    });
-
-    if(btnPause) btnPause.addEventListener('click', () => {
-        isPaused = !isPaused;
-        const icon = btnPause.querySelector('i');
-        if (isPaused) {
-            stopSlide();
-            icon.classList.replace('fa-pause', 'fa-play');
+        if (currentSort === 'kor') {
+            targetKeys = allKeys.filter(k => /[ㄱ-ㅎ가-힣]/.test(k) && k !== '기타').sort();
+            if (allKeys.includes('기타')) targetKeys.push('기타');
         } else {
-            startSlide();
-            icon.classList.replace('fa-play', 'fa-pause');
+            targetKeys = allKeys.filter(k => /[A-Z]/.test(k)).sort();
+            if (allKeys.includes('기타')) targetKeys.push('기타');
         }
-    });
 
-    startSlide();
+        const choMap = {
+            "가": "ㄱ", "나": "ㄴ", "다": "ㄷ", "라": "ㄹ", "마": "ㅁ", 
+            "바": "ㅂ", "사": "ㅅ", "아": "ㅇ", "자": "ㅈ", "차": "ㅊ", 
+            "카": "ㅋ", "타": "ㅌ", "파": "ㅍ", "하": "ㅎ", "기타": "기타"
+        };
+
+        targetKeys.forEach(key => {
+            const brands = brandData[key].filter(b => b.toLowerCase().includes(filter.toLowerCase()));
+            if (brands.length === 0) return;
+
+            const indexBtn = document.createElement('button');
+            indexBtn.textContent = choMap[key] || key;
+            indexBtn.addEventListener('click', () => {
+                const targetEl = document.getElementById(`brand-first-${key}`);
+                if (targetEl) {
+                    const container = document.querySelector('.brand-list-scroll');
+                    container.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
+                }
+            });
+            brandIndexContainer.appendChild(indexBtn);
+
+            brands.forEach((name, idx) => {
+                const li = document.createElement('li');
+                if (idx === 0) li.id = `brand-first-${key}`;
+                li.innerHTML = `<a href="#">${name}</a>`;
+                brandListContainer.appendChild(li);
+            });
+        });
+    }
+
+    if (sortButtons) {
+        sortButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sortButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSort = btn.dataset.sort;
+                if (brandSearchInput) brandSearchInput.value = '';
+                renderBrands();
+            });
+        });
+    }
+
+    if (brandSearchInput) {
+        brandSearchInput.addEventListener('input', (e) => {
+            renderBrands(e.target.value);
+        });
+    }
 });
