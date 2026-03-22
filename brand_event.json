@@ -1,0 +1,67 @@
+{
+  "brand_event": [
+    {
+      "id": "brand_event001",
+      "type": "image",
+      "file": "img/brand_event/event001.jpg",
+      "title": "트루동 향수 기획전",
+      "content": "BEST 향 사은 이벤트"
+    },
+    {
+      "id": "brand_event002",
+      "type": "image",
+      "file": "img/brand_event/event002.jpg",
+      "title": "스와로브스키 X 성한빈",
+      "content": "BOY IN HEART"
+    },
+    {
+      "id": "brand_event003",
+      "type": "image",
+      "file": "img/brand_event/event003.jpg",
+      "title": "캉골",
+      "content": "사은 이벤트"
+    },
+    {
+      "id": "brand_event004",
+      "type": "image",
+      "file": "img/brand_event/event004.jpg",
+      "title": "크리드 신제품 출시",
+      "content": "전구매 고객 사은품 증정"
+    },
+    {
+      "id": "brand_event005",
+      "type": "image",
+      "file": "img/brand_event/event005.jpg",
+      "title": "유튜스포츠",
+      "content": "사은 이벤트"
+    },
+    {
+      "id": "brand_event006",
+      "type": "image",
+      "file": "img/brand_event/event006.jpg",
+      "title": "아크메드라비",
+      "content": "단독사은 이벤트"
+    },
+    {
+      "id": "brand_event007",
+      "type": "image",
+      "file": "img/brand_event/event007.jpg",
+      "title": "슈피겐 X 신라면세점",
+      "content": "사은 이벤트"
+    },
+    {
+      "id": "brand_event008",
+      "type": "image",
+      "file": "img/brand_event/event008.jpg",
+      "title": "자크 드 마누어",
+      "content": "사은 이벤트"
+    },
+    {
+      "id": "brand_event009",
+      "type": "image",
+      "file": "img/brand_event/event009.jpg",
+      "title": "쥬얼리 세트 할인전",
+      "content": "세트 할인 받아보세요!"
+    }
+ ]
+}

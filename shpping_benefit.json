@@ -1,0 +1,61 @@
+{
+  "brand_event": [
+    {
+      "id": "shopping_benefit001",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit001.jpg",
+      "title": "오늘의 혜택 모음",
+      "content": "신라의 혜택 한 번에 확인"
+    },
+    {
+      "id": "shopping_benefit002",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit002.jpg",
+      "title": "출국예정일 등록하면",
+      "content": "더블적립금 혜택 드려요!"
+    },
+    {
+      "id": "shopping_benefit003",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit003.jpg",
+      "title": "신라 선불 최대 187만원 혜택!",
+      "content": "구매금액별 더블혜택 받아가세요!"
+    },
+    {
+      "id": "shopping_benefit004",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit004.jpg",
+      "title": "예비신혼부부를 위한 달달한 혜택",
+      "content": "최대 50만원 혜택 받아가세요!"
+    },
+    {
+      "id": "shopping_benefit005",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit005.jpg",
+      "title": "서울점, 제주점 택시타고 오면",
+      "content": "신라 선불 1만원 증정(영수증제시시)"
+    },
+    {
+      "id": "shopping_benefit006",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit006.jpg",
+      "title": "친구초대시 60,000원 증정",
+      "content": "신라면세점 가입 안 한 내 친구랑 적립금 받아가세요!"
+    },
+    {
+      "id": "shopping_benefit007",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit007.jpg",
+      "title": "서울점 프리퀸시 이벤트",
+      "content": "방문하면 할 수록 더 커지는 혜택"
+    },
+    {
+      "id": "shopping_benefit008",
+      "type": "image",
+      "file": "img/benefit/shopping_benefit008.jpg",
+      "title": "TASTY JEJU",
+      "content": "쇼핑하고 제주 대표 다이닝 혜택을 즐기세요!"
+    }
+
+ ]
+}

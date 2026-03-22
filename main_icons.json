@@ -1,0 +1,81 @@
+{ "main_icons":[
+ {
+      "id": "main_icons001",
+      "type": "image",
+      "file": "img/main_icons/main_icons001.png",
+      "title": "오늘의 혜택"
+},
+{
+      "id": "main_icons002",
+      "type": "image",
+      "file": "img/main_icons/main_icons002.png",
+      "title": "유통기한임박"
+},
+{
+      "id": "main_icons003",
+      "type": "gif",
+      "file": "img/main_icons/main_icons003.gif",
+      "title": "신상"
+},
+{
+      "id": "main_icons004",
+      "type": "image",
+      "file": "img/main_icons/main_icons004.jpg",
+      "title": "환율보상"
+},
+{
+      "id": "main_icons005",
+      "type": "image",
+      "file": "img/main_icons/main_icons005.jpg",
+      "title": "굿바이 세일"
+},
+{
+      "id": "main_icons006",
+      "type": "image",
+      "file": "img/main_icons/main_icons006.jpg",
+      "title": "봄맞이홈케어"
+},
+{
+      "id": "main_icons007",
+      "type": "image",
+      "file": "img/main_icons/main_icons007.jpg",
+      "title": "러닝 스타일"
+},
+{
+      "id": "main_icons008",
+      "type": "image",
+      "file": "img/main_icons/main_icons008.png",
+      "title": "주류"
+},
+{
+      "id": "main_icons009",
+      "type": "image",
+      "file": "img/main_icons/main_icons009.png",
+      "title": "향수"
+},
+{
+      "id": "main_icons010",
+      "type": "image",
+      "file": "img/main_icons/main_icons010.png",
+      "title": "아이웨어"
+},
+{
+      "id": "main_icons011",
+      "type": "image",
+      "file": "img/main_icons/main_icons011.jpg",
+      "title": "트랜드-K"
+},
+{
+      "id": "main_icons012",
+      "type": "image",
+      "file": "img/main_icons/main_icons012.png",
+      "title": "지점혜택"
+},
+{
+      "id": "main_icons013",
+      "type": "image",
+      "file": "img/main_icons/main_icons013.jpg",
+      "title": "인천공항점 혜택"
+}
+]
+}

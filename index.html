@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 메인 페이지</title>
+    <!-- 구글 폰트: Noto Sans KR 추가 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 폰트 어썸 CDN 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contents-inner">
+                    <div class="exchange-rate">
+                        <span>오늘의 환율</span>
+                        <strong class="rate">$1=1,496.00원</strong>
+                    </div>
+                    <ul class="util-menu">
+                        <li><a href="#">Language <i class="fa-solid fa-chevron-down" style="font-size: 8px; margin-left: 4px;"></i></a></li>
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">주문가능시간</a></li>
+                        <li><a href="#" class="btn-chat"><span>상담톡</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-nav">
+            <div class="container">
+                <div class="contents-inner">
+                    <div class="logo-group">
+                        <div class="logo">
+                            <a href="/"><img src="img/logo.png" alt="SHOP LOGO"></a>
+                        </div>
+                        <div class="platform-selector">
+                            <button type="button" class="btn-platfrom">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <div class="platform-menu">
+                                <ul>
+                                    <li><a href="#">온라인 면세점</a></li>
+                                    <li><a href="#">오프라인 매장</a></li>
+                                    <li><a href="#">멤버십 안내</a></li>
+                                    <li><a href="#">이벤트/혜택</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="gnb">
+                        <div class="gnb-group">
+                            <ul>
+                                <li class="menu-category">
+                                    <a href="#"><span>카테고리</span> <i class="fa-solid fa-chevron-down icon-sm"></i></a>
+                                    <div class="mega-menu">
+                                        <div class="mega-menu-inner">
+                                            <div class="depth1"><ul></ul></div>
+                                            <div class="depth2"><ul></ul></div>
+                                            <div class="depth3"><ul></ul></div>
+                                            <div class="mega-right"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-brand">
+                                    <a href="#"><span>브랜드</span> <i class="fa-solid fa-chevron-down icon-sm"></i></a>
+                                    <!-- 브랜드 선택 박스 -->
+                                    <div class="brand_wrap">
+                                        <!-- 1열: 검색창 -->
+                                        <div class="brand-row-1">
+                                            <div class="brand-search">
+                                                <input type="text" placeholder="브랜드명을 검색해주세요">
+                                                <button type="button" class="btn-brand-search">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- 2열: 정렬 필터 -->
+                                        <div class="brand-row-2">
+                                            <div class="brand-sort">
+                                                <button type="button" class="sort-btn active" data-sort="kor">가나다순</button>
+                                                <span class="dot">.</span>
+                                                <button type="button" class="sort-btn" data-sort="eng">알파벳순</button>
+                                            </div>
+                                        </div>
+                                        <!-- 3열: 브랜드 리스트 및 인덱스 -->
+                                        <div class="brand-row-3">
+                                            <div class="brand-list-scroll">
+                                                <ul class="brand-list">
+                                                    <!-- JS에서 동적 생성 -->
+                                                </ul>
+                                            </div>
+                                            <div class="brand-index-nav">
+                                                <!-- JS에서 '가나다' 또는 'ABC' 동적 생성 -->
+                                            </div>
+                                        </div>
+                                        <!-- 4열: 위시리스트 -->
+                                        <div class="brand-row-4">
+                                            <a href="#" class="btn-wishlist">
+                                                <span>MY 위시리스트 바로가기</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#"><span>혜택</span></a></li>
+                                <li><a href="#"><span>세일</span></a></li>
+                                <li><a href="#"><span>랭킹</span></a></li>
+                                <li><a href="#"><span>3시간전</span></a></li>
+                                <li><a href="#"><span>신라부티크</span></a></li>
+                                <li><a href="#"><span>조 말론 런던</span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="header-right">
+                        <div class="search-box">
+                            <input type="text" placeholder="젠틀몬스터 2026 신규 컬렉션">
+                            <button type="button" class="btn-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                        <div class="user-actions">
+                            <a href="#" class="btn-mypage"><i class="fa-regular fa-user"></i></a>
+                            <a href="#" class="btn-cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                <!-- JS에서 slider.json 데이터를 바탕으로 동적 생성됨 -->
+            </div>
+            <div class="container hero-control-container">
+                <div class="hero-controls">
+                    <button type="button" class="btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="slide-counter">
+                        <span class="current">1</span>
+                        <span class="total-group">/ <span class="total">20</span></span>
+                    </div>
+                    <button type="button" class="btn-pause"><i class="fa-solid fa-pause"></i></button>
+                    <button type="button" class="btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="main-icons">
+        <div class="icons-container">
+            <div class="icons-wrapper">
+                <ul class="icons-list">
+                    <!-- JS에서 icons.json 데이터를 바탕으로 동적 생성됨 -->
+                </ul>
+            </div>
+            <button type="button" class="btn-icon-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button type="button" class="btn-icon-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section id="popular-products">
+        <div class="container">
+            <div class="popular-title-box">
+                <strong>지금 많이 보는 상품이에요</strong>
+            </div>
+            <div class="popular-slider-wrap">
+                <div class="popular-list-container">
+                    <ul class="popular-list">
+                        <!-- JS에서 dynamic하게 생성됨 -->
+                    </ul>
+                </div>
+                <button type="button" class="btn-popular-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="btn-popular-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+        <div class="container">
+            <h2 class="section-title">New Arrivals</h2>
+            <div id="product-list" class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/001.JPG" alt="샘플">
+                        <span class="badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 01</p>
+                        <p class="product-price">39,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/002.JPG" alt="샘플">
+                        <span class="badge best">BEST</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 02</p>
+                        <p class="product-price">45,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="gemini/003.JPG" alt="샘플">
+                        <span class="badge sale">SALE</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 03</p>
+                        <p class="product-price">29,000원</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://via.placeholder.com/297x357" alt="샘플">
+                        <span class="badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">Product Name 04</p>
+                        <p class="product-price">52,000원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2026 Shopping Mall. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

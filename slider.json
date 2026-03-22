@@ -1,0 +1,164 @@
+{
+  "sliders": [
+    {
+      "id": "slider001",
+      "type": "video",
+      "file": "img/slider/1.mp4",
+      "title": "",
+      "content": "",
+      "textColor": ""
+    },
+    {
+      "id": "slider002",
+      "type": "video",
+      "file": "img/slider/2.mp4",
+      "title": "",
+      "content": "",
+      "textColor": ""
+    },
+    {
+      "id": "slider003",
+      "type": "image",
+      "file": "img/slider/3.jpg",
+      "title": "지금 전세계가 주목하는\nK-컬쳐의 모든것",
+      "content": "K-ITEM 한자리에서 만나보세요",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider004",
+      "type": "image",
+      "file": "img/slider/4.jpg",
+      "title": "뷔와 함께 만나는\n스노우피크 New 컬렉션",
+      "content": "2026년 새로운 신상을 만나보세요!",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider005",
+      "type": "image",
+      "file": "img/slider/5.jpg",
+      "title": "스톤헨지 X 신라면세점\n18K 단독 상품 출시",
+      "content": "18K 상품과 사은품을 오직 신라에서 만나보세요!",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider006",
+      "type": "image",
+      "file": "img/slider/6.jpg",
+      "title": "2026 S/S\nLUXURY SPRING",
+      "content": "New Arrivals sale !",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider007",
+      "type": "image",
+      "file": "img/slider/7.jpg",
+      "title": "라코스테\n2026 SS 신상품 제안전",
+      "content": "포근한 날씨를 위한 라코스테 신상품!",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider008",
+      "type": "image",
+      "file": "img/slider/8.jpg",
+      "title": "닷사이23 우드케이스 포함\n2병이상 구매시 15% 할인",
+      "content": "신라에서 할인된 가격으로 만나보세요",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider009",
+      "type": "image",
+      "file": "img/slider/9.jpg",
+      "title": "다가오는 봄을 위한\n가벼운 스니커즈 추천!",
+      "content": "봄의 시작을 함께할 한 켤레 준비하기",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider010",
+      "type": "image",
+      "file": "img/slider/10.jpg",
+      "title": "잃어버려도 괜찮아,\n신라가 준비했으니까!",
+      "content": "신라에서 한쪽 귀걸이 & 피어싱 쇼핑하세요!",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider011",
+      "type": "image",
+      "file": "img/slider/11.jpg",
+      "title": "산드로 선런칭 제안전\n틴트렌즈 & 인기모델",
+      "content": "신라에서 만나보세요",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider012",
+      "type": "image",
+      "file": "img/slider/12.jpg",
+      "title": "얼모스트 블루\n신라 단독 사은 이벤트",
+      "content": "$20 이상 구매 시, 사은품 증정",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider013",
+      "type": "image",
+      "file": "img/slider/13.jpg",
+      "title": "프론투라인\n신라 단독 사은이벤트",
+      "content": "구매 금액별 사은품 증정!",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider014",
+      "type": "image",
+      "file": "img/slider/14.jpg",
+      "title": "봄맞이\n아이웨어 제안전",
+      "content": "최대 50% 세일",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider015",
+      "type": "image",
+      "file": "img/slider/15.jpg",
+      "title": "배럴 with 최미나수\n2026 컬렉션",
+      "content": "최미나수 PICK으로 만나는 배럴 신상품!",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider016",
+      "type": "image",
+      "file": "img/slider/16.jpg",
+      "title": "다나버튼 X 신라면세점\n단톡 사은 이벤트",
+      "content": "26SS 신상품과 단독 사은품까지 함께 만나보세요!",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider017",
+      "type": "image",
+      "file": "img/slider/17.jpg",
+      "title": "페라가모 신라 단독 제안전\nSF1114 모델 오직 !",
+      "content": "신라에서만 만나보세요",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider018",
+      "type": "image",
+      "file": "img/slider/18.jpg",
+      "title": "두 사람의 첫 시작,\n특별한 혜택으로 더 빛나게!",
+      "content": "신라만의 혜택을 더해 드립니다",
+      "textColor": "#000000"
+    },
+    {
+      "id": "slider019",
+      "type": "image",
+      "file": "img/slider/19.jpg",
+      "title": "KEEN\n26 S/S 신상품 입고!",
+      "content": "킨 신상 JASPER 운동화 구경하세요!",
+      "textColor": "#ffffff"
+    },
+    {
+      "id": "slider020",
+      "type": "image",
+      "file": "img/slider/20.jpg",
+      "title": "젠틀몬스터\n2026 컬렉션",
+      "content": "신규 제품을 만나보세요.",
+      "textColor": "#000000"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "shilla_only_brand": [
+    {
+      "id": "shilla_only_brand001",
+      "type": "image",
+      "file": "img/shilla_only_brand/only001.jpg",
+      "title": "Exclusively in shilla",
+      "content": "ALTERNATIVE STEREO"
+    },
+    {
+      "id": "shilla_only_brand002",
+      "type": "image",
+      "file": "img/shilla_only_brand/only002.jpg",
+      "title": "Exclusively in shilla",
+      "content": "PURAXEL"
+    },
+    {
+      "id": "shilla_only_brand003",
+      "type": "image",
+      "file": "img/shilla_only_brand/only003.jpg",
+      "title": "Exclusively in shilla",
+      "content": "ADIDAS RUN"
+    },
+    {
+      "id": "shilla_only_brand004",
+      "type": "image",
+      "file": "img/shilla_only_brand/only004.jpg",
+      "title": "Exclusively in shilla",
+      "content": "CROCODILE INNERWEAR"
+    },
+    {
+      "id": "shilla_only_brand005",
+      "type": "image",
+      "file": "img/shilla_only_brand/only005.jpg",
+      "title": "Exclusively in shilla",
+      "content": "REST IN NATURE"
+    },
+    {
+      "id": "shilla_only_brand006",
+      "type": "image",
+      "file": "img/shilla_only_brand/only006.jpg",
+      "title": "Exclusively in shilla",
+      "content": "BONAMISU"
+    },
+    {
+      "id": "shilla_only_brand007",
+      "type": "image",
+      "file": "img/shilla_only_brand/only007.jpg",
+      "title": "Exclusively in shilla",
+      "content": "ROOTECA"
+    },
+    {
+      "id": "shilla_only_brand008",
+      "type": "image",
+      "file": "img/shilla_only_brand/only008.jpg",
+      "title": "Exclusively in shilla",
+      "content": "ELLA K"
+    },
+    {
+      "id": "shilla_only_brand009",
+      "type": "image",
+      "file": "img/shilla_only_brand/only009.jpg",
+      "title": "Exclusively in shilla",
+      "content": "FRAGRANCE DU BOIS"
+    },
+    {
+      "id": "shilla_only_brand010",
+      "type": "image",
+      "file": "img/shilla_only_brand/only010.jpg",
+      "title": "Exclusively in shilla",
+      "content": "BOADICEA THE VICTORIOUS"
+    }
+ ]
+}
