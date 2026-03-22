@@ -1129,6 +1129,7 @@ header.fixed .brand_wrap {
     height: 42px;
     font-weight: 400;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;

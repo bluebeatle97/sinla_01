@@ -1,0 +1,47 @@
+{
+    "products": [
+        {
+            "brand": "CHANEL",
+            "name": "루쥬 코코 플래쉬 - 시선강탈 립스틱",
+            "price_discount": 20,
+            "price_usd": 45,
+            "price_krw": "67,320",
+            "img": "gemini/001.JPG"
+        },
+        {
+            "brand": "DIOR",
+            "name": "어딕트 립 글로우 - 국민 립밤의 귀환",
+            "price_usd": 42,
+            "price_krw": "62,832",
+            "img": "gemini/002.JPG"
+        },
+        {
+            "brand": "ESTEE LAUDER",
+            "name": "어드밴스드 나이트 리페어 - 갈색병 세럼",
+            "price_usd": 115,
+            "price_krw": "172,040",
+            "img": "gemini/003.JPG"
+        },
+        {
+            "brand": "LANCOME",
+            "name": "제니피끄 세럼 - 안티에이징의 정석",
+            "price_usd": 120,
+            "price_krw": "179,520",
+            "img": "gemini/004.JPG"
+        },
+        {
+            "brand": "YSL",
+            "name": "리브르 오 드 빠르펭 - 자유로운 향기",
+            "price_usd": 95,
+            "price_krw": "142,120",
+            "img": "gemini/005.JPG"
+        },
+        {
+            "brand": "KIEHL'S",
+            "name": "울트라 페이셜 크림 - 24시간 보습",
+            "price_usd": 55,
+            "price_krw": "82,280",
+            "img": "gemini/006.JPG"
+        }
+    ]
+}
