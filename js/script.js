@@ -255,7 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
-                const products = data.products.slice(0, 10);
+                // 전체 상품 랜덤 셔플 후 최대 10개로 제한
+                const shuffledProducts = data.products.sort(() => 0.5 - Math.random());
+                const products = shuffledProducts.slice(0, 10);
+                
                 moduleList.innerHTML = products.map(product => {
                     const discount = parseInt(product.price_discount);
                     const originalUsd = parseFloat(product.price_usd);
@@ -330,8 +333,11 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
-                // 11번째부터 20번째까지 상품 추출 (중복 방지)
-                const products5 = data.products.slice(10, 20);
+                // '싱글몰트위스키' 아이템 전체 필터링 후 랜덤 셔플
+                const whiskyProducts = data.products.filter(p => p.item === "싱글몰트위스키");
+                const shuffledWhisky = whiskyProducts.sort(() => 0.5 - Math.random());
+                const products5 = shuffledWhisky;
+                
                 renderModuleProducts5(products5);
             });
     }
@@ -350,6 +356,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="index2.html" class="module-link">
                             <div class="img-box">
                                 <img src="${product.img}" alt="${product.name}">
+                                <div class="img-overlay">
+                                    <div class="overlay-btns">
+                                        <button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button>
+                                        <button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button>
+                                        <button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="info-box">
                                 <p class="brand">${product.brand}</p>
@@ -357,6 +370,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="price-top">
                                     <span class="discount">${discount}%</span>
                                     <span class="final-usd">$${finalUsd.toLocaleString()}</span>
+                                </div>
+                                <div class="price-bottom">
+                                    <span class="final-krw">${finalKrw.toLocaleString()}원</span>
+                                </div>
+                                <div class="review-row">
+                                    <i class="fa-solid fa-star star"></i>
+                                    <span class="score">${product.review_score || '0.0'}</span>
+                                    <div class="divider"></div>
+                                    <span class="count">(${product.review_count || '0'})</span>
                                 </div>
                             </div>
                         </a>
