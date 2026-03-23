@@ -318,4 +318,65 @@ document.addEventListener('DOMContentLoaded', function() {
             moduleList.style.transform = `translateX(-${modScrollPos}px)`;
         });
     }
+
+    // 6. 5단 프로덕트 인기 카테고리 상품 (모듈형 슬라이더)
+    const moduleList5 = document.querySelector('.module-list-5');
+    const btnModPrev5 = document.querySelector('#module-products-5 .btn-prev');
+    const btnModNext5 = document.querySelector('#module-products-5 .btn-next');
+    let modScrollPos5 = 0;
+    const modItemWidth5 = 260; // 카드(240) + 간격(20)
+
+    if (moduleList5) {
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                // 11번째부터 20번째까지 상품 추출 (중복 방지)
+                const products5 = data.products.slice(10, 20);
+                renderModuleProducts5(products5);
+            });
+    }
+
+    function renderModuleProducts5(products) {
+        if (!moduleList5) return;
+        moduleList5.innerHTML = products.map(product => {
+            const discount = parseInt(product.price_discount);
+            const originalUsd = parseFloat(product.price_usd);
+            const finalUsd = Math.floor(originalUsd * (1 - discount / 100));
+            const finalKrw = Math.floor(finalUsd * 1496.00);
+
+            return `
+                <li class="module-item-5">
+                    <div class="module-card-5">
+                        <a href="index2.html" class="module-link">
+                            <div class="img-box">
+                                <img src="${product.img}" alt="${product.name}">
+                            </div>
+                            <div class="info-box">
+                                <p class="brand">${product.brand}</p>
+                                <p class="name">${product.name}</p>
+                                <div class="price-top">
+                                    <span class="discount">${discount}%</span>
+                                    <span class="final-usd">$${finalUsd.toLocaleString()}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            `;
+        }).join('');
+    }
+
+    if (btnModNext5) {
+        btnModNext5.addEventListener('click', () => {
+            const maxScroll5 = moduleList5.scrollWidth - 1280;
+            modScrollPos5 = Math.min(modScrollPos5 + modItemWidth5, maxScroll5);
+            moduleList5.style.transform = `translateX(-${modScrollPos5}px)`;
+        });
+    }
+    if (btnModPrev5) {
+        btnModPrev5.addEventListener('click', () => {
+            modScrollPos5 = Math.max(modScrollPos5 - modItemWidth5, 0);
+            moduleList5.style.transform = `translateX(-${modScrollPos5}px)`;
+        });
+    }
 });

@@ -1,4 +1,4 @@
-/* Reset CSS */
+﻿/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
@@ -189,7 +189,7 @@ header.fixed {
     backdrop-filter: blur(5px);
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 15px 0; /* 상하 패딩 조정 */
+    padding: 15px 0; /* ?곹븯 ?⑤뵫 議곗젙 */
     z-index: 1100;
     opacity: 0;
     visibility: hidden;
@@ -212,7 +212,7 @@ header.fixed {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45px; /* 각 항목 높이 설정 */
+    height: 45px; /* 媛???ぉ ?믪씠 ?ㅼ젙 */
     font-size: 14px;
     color: #222;
     font-weight: 500;
@@ -247,11 +247,11 @@ header.fixed {
 
 .gnb ul {
     display: flex;
-    height: 100%; /* 수직으로 꽉 차게 설정 */
+    height: 100%; /* ?섏쭅?쇰줈 苑?李④쾶 ?ㅼ젙 */
 }
 
 .gnb li {
-    height: 100%; /* li가 헤더 전체 높이를 차지하도록 설정 */
+    height: 100%; /* li媛 ?ㅻ뜑 ?꾩껜 ?믪씠瑜?李⑥??섎룄濡??ㅼ젙 */
 }
 
 .gnb li a {
@@ -270,18 +270,18 @@ header.fixed {
 }
 
 .menu-category {
-    position: relative; /* 메가 메뉴의 기준점을 카테고리 메뉴로 설정 */
+    position: relative; /* 硫붽? 硫붾돱??湲곗??먯쓣 移댄뀒怨좊━ 硫붾돱濡??ㅼ젙 */
 }
 
 .menu-brand {
-    position: relative; /* 브랜드 박스의 기준점 */
+    position: relative; /* 釉뚮옖??諛뺤뒪??湲곗???*/
 }
 
 .menu-brand:hover .brand_wrap {
-    display: block; /* 호버 시 브랜드 박스 노출 */
+    display: block; /* ?몃쾭 ??釉뚮옖??諛뺤뒪 ?몄텧 */
 }
 
-/* 브랜드 메뉴 (.brand_wrap) 전체 스타일 - 초기 설정 복구 */
+/* 釉뚮옖??硫붾돱 (.brand_wrap) ?꾩껜 ?ㅽ???- 珥덇린 ?ㅼ젙 蹂듦뎄 */
 .brand_wrap {
     display: none;
     position: absolute;
@@ -295,7 +295,7 @@ header.fixed {
     box-sizing: border-box;
 }
 
-/* 1열: 검색창 (340*40) */
+/* 1?? 寃?됱갹 (340*40) */
 .brand-row-1 {
     width: 340px;
 }
@@ -345,7 +345,7 @@ header.fixed {
     color: #222;
 }
 
-/* 2열: 정렬 필터 (340*50) */
+/* 2?? ?뺣젹 ?꾪꽣 (340*50) */
 .brand-row-2 {
     width: 340px;
     height: 50px;
@@ -367,15 +367,15 @@ header.fixed {
     font-size: 14px;
     color: #999;
     cursor: pointer;
-    font-weight: 400; /* 볼드 제거 */
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; /* 맑은 고딕 적용 */
+    font-weight: 400; /* 蹂쇰뱶 ?쒓굅 */
+    font-family: 'Malgun Gothic', '留묒? 怨좊뵓', sans-serif; /* 留묒? 怨좊뵓 ?곸슜 */
     transition: color 0.2s;
     text-align: left;
 }
 
 .sort-btn.active {
-    color: #e62a22; /* 요청하신 레드 컬러 */
-    font-weight: 400; /* 활성화 시에도 볼드 제거 */
+    color: #e62a22; /* ?붿껌?섏떊 ?덈뱶 而щ윭 */
+    font-weight: 400; /* ?쒖꽦???쒖뿉??蹂쇰뱶 ?쒓굅 */
 }
 
 .brand-sort .dot {
@@ -384,12 +384,12 @@ header.fixed {
     font-weight: bold;
 }
 
-/* 3열: 브랜드 리스트 및 인덱스 */
+/* 3?? 釉뚮옖??由ъ뒪??諛??몃뜳??*/
 .brand-row-3 {
     width: 350px; /* 320 + 30 */
     display: flex;
     position: relative;
-    height: 400px; /* 스크롤을 위한 3열의 고정 높이 설정 */
+    height: 400px; /* ?ㅽ겕濡ㅼ쓣 ?꾪븳 3?댁쓽 怨좎젙 ?믪씠 ?ㅼ젙 */
 }
 
 .brand-list-scroll {
@@ -399,7 +399,7 @@ header.fixed {
     position: relative;
 }
 
-/* 스크롤바 숨기기: 투명하게 */
+/* ?ㅽ겕濡ㅻ컮 ?④린湲? ?щ챸?섍쾶 */
 .brand-list-scroll::-webkit-scrollbar {
     width: 0;
     background: transparent;
@@ -420,12 +420,12 @@ header.fixed {
     padding: 15px 0 0; 
     box-sizing: border-box;
     display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-    border-bottom: none; /* 밑줄 제거 */
+    align-items: center; /* ?몃줈 以묒븰 ?뺣젹 */
+    border-bottom: none; /* 諛묒쨪 ?쒓굅 */
 }
 
 header.fixed .brand_wrap {
-    top: 70px; /* 스크롤 시 고정 헤더 높이에 맞춤 */
+    top: 70px; /* ?ㅽ겕濡???怨좎젙 ?ㅻ뜑 ?믪씠??留욎땄 */
 }
 
 .brand-list li a {
@@ -434,8 +434,8 @@ header.fixed .brand_wrap {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 14px; /* 13px로 수정 */
-    margin: 0 0 0 10px; /* 좌측 마진 10px 추가 */
+    font-size: 14px; /* 13px濡??섏젙 */
+    margin: 0 0 0 10px; /* 醫뚯륫 留덉쭊 10px 異붽? */
 }
 
 .brand-index-nav {
@@ -445,12 +445,12 @@ header.fixed .brand_wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px; /* 세로 간격을 12px로 확대 */
+    gap: 12px; /* ?몃줈 媛꾧꺽??12px濡??뺣? */
     overflow-y: auto;
     box-sizing: border-box;
 }
 
-/* 인덱스 스크롤바 숨김 */
+/* ?몃뜳???ㅽ겕濡ㅻ컮 ?④? */
 .brand-index-nav::-webkit-scrollbar {
     display: none;
 }
@@ -458,7 +458,7 @@ header.fixed .brand_wrap {
 .brand-index-nav button {
     background: none;
     border: none;
-    font-size: 18px; /* 요청하신 18px */
+    font-size: 18px; /* ?붿껌?섏떊 18px */
     color: #999;
     cursor: pointer;
     font-weight: 500;
@@ -470,7 +470,7 @@ header.fixed .brand_wrap {
     font-weight: 700;
 }
 
-/* 4열: 위시리스트 (340*80) */
+/* 4?? ?꾩떆由ъ뒪??(340*80) */
 .brand-row-4 {
     width: 340px;
     height: 80px;
@@ -513,7 +513,7 @@ header.fixed .brand_wrap {
 .mega-menu {
     position: absolute;
     top: 100%;
-    left: 0; /* 카테고리 메뉴의 왼쪽 끝에 맞춤 */
+    left: 0; /* 移댄뀒怨좊━ 硫붾돱???쇱そ ?앹뿉 留욎땄 */
     width: 900px;
     height: 600px;
     background: #fff;
@@ -584,7 +584,7 @@ header.fixed .brand_wrap {
     font-size: 15px !important;
     font-weight: 530;
     color: #444;
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; /* 맑은 고딕 적용 */
+    font-family: 'Malgun Gothic', '留묒? 怨좊뵓', sans-serif; /* 留묒? 怨좊뵓 ?곸슜 */
 }
 
 .depth3 ul li a:hover {
@@ -614,7 +614,7 @@ header.fixed .brand_wrap {
 
 .promo-grid {
     display: flex;
-    gap: 15px; /* 110*2 + 15 = 235px (컨텐츠 폭 250px 내 안정적 배치) */
+    gap: 15px; /* 110*2 + 15 = 235px (而⑦뀗痢???250px ???덉젙??諛곗튂) */
 }
 
 .promo-item {
@@ -641,7 +641,7 @@ header.fixed .brand_wrap {
 
 .brand-circles {
     display: flex;
-    gap: 12px; /* 66*3 + 12*2 = 222px (컨텐츠 폭 250px 내 안정적 배치) */
+    gap: 12px; /* 66*3 + 12*2 = 222px (而⑦뀗痢???250px ???덉젙??諛곗튂) */
 }
 
 .brand-item {
@@ -672,7 +672,7 @@ header.fixed .brand_wrap {
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* 66px 초과 시 ... 처리 */
+    text-overflow: ellipsis; /* 66px 珥덇낵 ??... 泥섎━ */
 }
 
 .circle.bg-black { background: #000 !important; }
@@ -827,7 +827,7 @@ header.fixed .brand_wrap {
     display: block;
 }
 
-/* 비디오 슬라이드 배경 */
+/* 鍮꾨뵒???щ씪?대뱶 諛곌꼍 */
 .slide video {
     position: absolute;
     top: 50%;
@@ -841,7 +841,7 @@ header.fixed .brand_wrap {
     z-index: 1;
 }
 
-/* 텍스트 컨테이너 레이아웃 (1280*600 + 패딩) */
+/* ?띿뒪??而⑦뀒?대꼫 ?덉씠?꾩썐 (1280*600 + ?⑤뵫) */
 .slide-text-wrap {
     width: 1280px;
     height: 600px;
@@ -849,10 +849,10 @@ header.fixed .brand_wrap {
     padding: 185px 0 0 180px;
     box-sizing: border-box;
     position: relative;
-    z-index: 10; /* 텍스트를 비디오 위로 (10) */
+    z-index: 10; /* ?띿뒪?몃? 鍮꾨뵒???꾨줈 (10) */
 }
 
-/* 텍스트 박스 (500*187) */
+/* ?띿뒪??諛뺤뒪 (500*187) */
 .slide-text-inner {
     width: 500px;
     height: 187px;
@@ -860,29 +860,29 @@ header.fixed .brand_wrap {
     flex-direction: column;
 }
 
-/* 제목 박스 (500*120) */
+/* ?쒕ぉ 諛뺤뒪 (500*120) */
 .slide-title {
     width: 500px;
     height: 120px;
     margin: 15px 0 0;
     font-size: 40px;
-    font-weight: 400; /* 볼드 제거 */
-    color: #000; /* 검은색 */
+    font-weight: 400; /* 蹂쇰뱶 ?쒓굅 */
+    color: #000; /* 寃???*/
     line-height: 1.2;
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
-    text-shadow: none; /* 테두리/그림자 제거 */
+    font-family: 'Malgun Gothic', '留묒? 怨좊뵓', sans-serif;
+    text-shadow: none; /* ?뚮몢由?洹몃┝???쒓굅 */
 }
 
-/* 내용 박스 (500*27) */
+/* ?댁슜 諛뺤뒪 (500*27) */
 .slide-desc {
     width: 500px;
     height: 27px;
     margin: 40px 0 0;
     font-size: 18px;
-    font-weight: 400; /* 볼드 제거 */
-    color: #000; /* 검은색 */
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
-    text-shadow: none; /* 테두리/그림자 제거 */
+    font-weight: 400; /* 蹂쇰뱶 ?쒓굅 */
+    color: #000; /* 寃???*/
+    font-family: 'Malgun Gothic', '留묒? 怨좊뵓', sans-serif;
+    text-shadow: none; /* ?뚮몢由?洹몃┝???쒓굅 */
 }
 
 .btn-more {
@@ -960,7 +960,7 @@ header.fixed .brand_wrap {
 .icons-list {
     display: flex;
     transition: transform 0.5s ease;
-    gap: 20px; /* 10개가 1280px에 딱 맞도록 간격 조정 ( (1280 - 1100) / 9 = 20 ) */
+    gap: 20px; /* 10媛쒓? 1280px????留욌룄濡?媛꾧꺽 議곗젙 ( (1280 - 1100) / 9 = 20 ) */
     padding: 0;
     margin: 0;
 }
@@ -995,30 +995,30 @@ header.fixed .brand_wrap {
     white-space: nowrap;
 }
 
-/* 화살표 버튼 */
+/* ?붿궡??踰꾪듉 */
 .btn-icon-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.5); /* 흰색 반투명 박스 */
+    background: rgba(255, 255, 255, 0.5); /* ?곗깋 諛섑닾紐?諛뺤뒪 */
     border: 1px solid #eee;
-    border-radius: 12px; /* 각 동글하게 */
-    color: #222; /* 화살표 색상 변경 */
+    border-radius: 12px; /* 媛??숆??섍쾶 */
+    color: #222; /* ?붿궡???됱긽 蹂寃?*/
     font-size: 24px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* 평소엔 안보임 */
+    opacity: 0; /* ?됱냼???덈낫??*/
     transition: all 0.3s ease;
     z-index: 20;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 은은한 그림자 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ????洹몃┝??*/
 }
 
 #main-icons:hover .btn-icon-nav {
-    opacity: 1; /* 커서 갖다대면 나옴 */
+    opacity: 1; /* 而ㅼ꽌 媛뽯떎?硫??섏샂 */
 }
 
 .btn-icon-nav:hover {
@@ -1027,7 +1027,7 @@ header.fixed .brand_wrap {
 }
 
 .btn-icon-nav.btn-prev {
-    left: calc(50% - 680px); /* 1280/2 + 여유공간 */
+    left: calc(50% - 680px); /* 1280/2 + ?ъ쑀怨듦컙 */
 }
 
 .btn-icon-nav.btn-next {
@@ -1113,17 +1113,17 @@ header.fixed .brand_wrap {
 
 footer {
     width: 100%;
-    padding: 80px 0; /* 상하 패딩 확대 */
+    padding: 80px 0; /* ?곹븯 ?⑤뵫 ?뺣? */
     text-align: center;
     background: #333 !important;
     color: #fff;
-    position: relative; /* 위치 고정 */
-    clear: both; /* 플로팅 요소 영향 차단 */
-    margin-top: 0; /* 섹션 자체 패딩으로 조절되므로 0으로 설정하거나 필요시 추가 */
+    position: relative; /* ?꾩튂 怨좎젙 */
+    clear: both; /* ?뚮줈???붿냼 ?곹뼢 李⑤떒 */
+    margin-top: 0; /* ?뱀뀡 ?먯껜 ?⑤뵫?쇰줈 議곗젅?섎?濡?0?쇰줈 ?ㅼ젙?섍굅???꾩슂??異붽? */
 }
 
 /* ========================================= */
-/* 4단 프로덕트 모듈형 섹션 (슬라이더) */
+/* 4???꾨줈?뺥듃 紐⑤뱢???뱀뀡 (?щ씪?대뜑) */
 /* ========================================= */
 #module-products {
     width: 100%;
@@ -1166,11 +1166,11 @@ footer {
 }
 
 .module-item {
-    flex: 0 0 305px; /* 너비 고정 및 압축 방지 */
+    flex: 0 0 305px; /* ?덈퉬 怨좎젙 諛??뺤텞 諛⑹? */
     list-style: none;
 }
 
-/* 4단 프로덕트 모듈형 카드 (305*520) */
+/* 4???꾨줈?뺥듃 紐⑤뱢??移대뱶 (305*520) */
 .module-card {
     width: 305px;
     height: 520px;
@@ -1180,39 +1180,39 @@ footer {
     flex-direction: column;
     border-radius: 20px;
     overflow: hidden;
-    background-color: #fff; /* 배경색 흰색 고정 */
+    background-color: #fff; /* 諛곌꼍???곗깋 怨좎젙 */
 }
 
 .module-card .img-box {
     width: 305px;
     height: 305px;
-    min-width: 305px; /* 절대 줄어들지 않게 고정 */
-    min-height: 305px; /* 절대 줄어들지 않게 고정 */
+    min-width: 305px; /* ?덈? 以꾩뼱?ㅼ? ?딄쾶 怨좎젙 */
+    min-height: 305px; /* ?덈? 以꾩뼱?ㅼ? ?딄쾶 怨좎젙 */
     overflow: hidden;
     background-color: #f5f5f5;
     margin-bottom: 20px;
     border-radius: 20px;
-    position: relative; /* 오버레이 기준점 */
+    position: relative; /* ?ㅻ쾭?덉씠 湲곗???*/
 }
 
-/* 이미지 호버 오버레이 */
+/* ?대?吏 ?몃쾭 ?ㅻ쾭?덉씠 */
 .img-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* 흰 배경 50% */
+    background-color: rgba(255, 255, 255, 0.5); /* ??諛곌꼍 50% */
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* 평소엔 숨김 */
+    opacity: 0; /* ?됱냼???④? */
     transition: opacity 0.3s ease;
     z-index: 5;
 }
 
 .module-card .img-box:hover .img-overlay {
-    opacity: 1; /* 호버 시 노출 */
+    opacity: 1; /* ?몃쾭 ???몄텧 */
 }
 
 .overlay-btns {
@@ -1223,7 +1223,7 @@ footer {
 .overlay-btns button {
     width: 50px;
     height: 50px;
-    background-color: rgba(0, 0, 0, 0.8); /* 검정 박스 80% */
+    background-color: rgba(0, 0, 0, 0.8); /* 寃??諛뺤뒪 80% */
     border: none;
     color: #fff;
     font-size: 20px;
@@ -1232,11 +1232,11 @@ footer {
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s;
-    border-radius: 10px; /* 버튼 모서리 미세 라운드 */
+    border-radius: 10px; /* 踰꾪듉 紐⑥꽌由?誘몄꽭 ?쇱슫??*/
 }
 
 .overlay-btns button:hover {
-    background-color: rgba(0, 0, 0, 1); /* 호버 시 완전 검정 */
+    background-color: rgba(0, 0, 0, 1); /* ?몃쾭 ???꾩쟾 寃??*/
 }
 
 .module-card .img-box img {
@@ -1248,13 +1248,13 @@ footer {
 .module-card .info-box {
     width: 305px;
     height: 145px;
-    padding: 0px 30px 0; /* 상하좌우 패딩 균형 조정 */
+    padding: 0px 30px 0; /* ?곹븯醫뚯슦 ?⑤뵫 洹좏삎 議곗젙 */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 중앙 정렬로 시각적 안정감 부여 */
+    justify-content: center; /* 以묒븰 ?뺣젹濡??쒓컖???덉젙媛?遺??*/
     text-align: left;
     box-sizing: border-box;
-    overflow: hidden; /* 박스 밖으로 나가는 것 방지 */
+    overflow: hidden; /* 諛뺤뒪 諛뽰쑝濡??섍???寃?諛⑹? */
 }
 
 .module-card .info-box .brand {
@@ -1271,13 +1271,13 @@ footer {
     font-size: 15px;
     color: #666;
     line-height: 1.4;
-    height: 21px; /* 15px * 1.4 정확한 1줄 높이 */
+    height: 21px; /* 15px * 1.4 ?뺥솗??1以??믪씠 */
     margin-bottom: 12px;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    visibility: visible !important; /* 강제 노출 */
+    visibility: visible !important; /* 媛뺤젣 ?몄텧 */
     opacity: 1 !important;
 }
 
@@ -1320,7 +1320,7 @@ footer {
     font-weight: 400;
 }
 
-/* 5열: 별점 + 리뷰 수 */
+/* 5?? 蹂꾩젏 + 由щ럭 ??*/
 .module-card .info-box .review-row {
     display: flex;
     align-items: center;
@@ -1349,27 +1349,27 @@ footer {
     color: #999;
 }
 
-/* 슬라이더 버튼 */
+/* ?щ씪?대뜑 踰꾪듉 */
 .btn-module-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 60px; /* 크기 약간 확대 */
+    width: 60px; /* ?ш린 ?쎄컙 ?뺣? */
     height: 60px;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid #eee;
-    /* border-radius 제거하여 네모나게 설정 */
+    /* border-radius ?쒓굅?섏뿬 ?ㅻえ?섍쾶 ?ㅼ젙 */
     cursor: pointer;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    opacity: 0; /* 평소엔 숨김 */
+    opacity: 0; /* ?됱냼???④? */
 }
 
 #module-products:hover .btn-module-nav {
-    opacity: 1; /* 섹션 호버 시 노출 */
+    opacity: 1; /* ?뱀뀡 ?몃쾭 ???몄텧 */
 }
 
 .btn-module-nav:hover {
@@ -1379,7 +1379,7 @@ footer {
 
 .btn-module-nav.btn-prev { left: -30px; border-radius: 15px; }
 .btn-module-nav.btn-next { right: -30px; border-radius: 15px; }
-/* 4단 프로덕트 모듈형 카드 (305*520) */
+/* 4???꾨줈?뺥듃 紐⑤뱢??移대뱶 (305*520) */
 .module-card {
     width: 305px;
     height: 520px;
@@ -1411,7 +1411,7 @@ footer {
     position: relative;
 }
 
-/* 이미지 호버 오버레이 */
+/* ?대?吏 ?몃쾭 ?ㅻ쾭?덉씠 */
 .img-overlay {
     position: absolute;
     top: 0;
@@ -1534,7 +1534,7 @@ footer {
     font-weight: 400;
 }
 
-/* 5열: 리뷰 영역 (링크 제외) */
+/* 5?? 由щ럭 ?곸뿭 (留곹겕 ?쒖쇅) */
 .review-box {
     width: 100%;
     padding: 0 30px;
@@ -1569,7 +1569,7 @@ footer {
     color: #999;
 }
 
-/* 슬라이더 버튼 */
+/* ?щ씪?대뜑 踰꾪듉 */
 .btn-module-nav {
     position: absolute;
     top: 50%;
@@ -1601,12 +1601,12 @@ footer {
 .btn-module-nav.btn-next { right: -30px; }
 
 /* ========================================= */
-/* 5단 상품 슬라이더 전용 스타일 */
+/* 5???곹뭹 ?щ씪?대뜑 ?꾩슜 ?ㅽ???*/
 /* ========================================= */
 #module-products-5 {
     width: 100%;
-    height: 467px; /* 4단보다 약간 작게 조절 가능 */
-    margin: 100px 0 0; /* 상하 간격 조절 */
+    height: 467px; /* 4?⑤낫???쎄컙 ?묎쾶 議곗젅 媛??*/
+    margin: 100px 0 0; /* ?곹븯 媛꾧꺽 議곗젅 */
     background-color: #fff;
     overflow: hidden;
 }
@@ -1624,11 +1624,11 @@ footer {
 }
 
 .module-item-5 {
-    flex: 0 0 240px; /* 5단 배열을 위한 240px 너비 */
+    flex: 0 0 240px; /* 5??諛곗뿴???꾪븳 240px ?덈퉬 */
     list-style: none;
 }
 
-/* 5단 상품 카드 디자인 (너비 240px에 최적화) */
+/* 5???곹뭹 移대뱶 ?붿옄??(?덈퉬 240px??理쒖쟻?? */
 .module-card-5 {
     width: 240px;
     height: 450px;
@@ -1702,7 +1702,7 @@ footer {
     font-weight: 700;
 }
 
-/* 슬라이더 버튼 (5단 전용) */
+/* ?щ씪?대뜑 踰꾪듉 (5???꾩슜) */
 .btn-module-nav-5 {
     position: absolute;
     top: 50%;
@@ -1727,3 +1727,40 @@ footer {
 
 .btn-module-nav-5.btn-prev { left: -25px; }
 .btn-module-nav-5.btn-next { right: -25px; }
+
+/* 슬라이더 버튼 (4단 & 5단 공통) */
+.btn-module-nav,
+.btn-module-nav-5 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #eee;
+    border-radius: 15px; /* 통일된 라운드 */
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+#module-products:hover .btn-module-nav,
+#module-products-5:hover .btn-module-nav-5 {
+    opacity: 1;
+}
+
+.btn-module-nav:hover,
+.btn-module-nav-5:hover {
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-module-nav.btn-prev,
+.btn-module-nav-5.btn-prev { left: -30px; }
+
+.btn-module-nav.btn-next,
+.btn-module-nav-5.btn-next { right: -30px; }
