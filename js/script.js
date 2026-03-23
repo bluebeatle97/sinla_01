@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 6. 5단 프로덕트 섹션 설정 함수
-    function setupModule5(sectionId, filterFn) {
+    function setupModule5(sectionId, filterFn, customSortFn = null) {
         const section = document.getElementById(sectionId);
         if (!section) return;
 
@@ -335,9 +335,13 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(r => r.json())
             .then(data => {
-                const filtered = data.products.filter(filterFn);
-                const shuffled = filtered.sort(() => 0.5 - Math.random());
-                renderModuleProducts5(list, shuffled);
+                let filtered = data.products.filter(filterFn);
+                if (customSortFn) {
+                    filtered = customSortFn(filtered);
+                } else {
+                    filtered = filtered.sort(() => 0.5 - Math.random());
+                }
+                renderModuleProducts5(list, filtered);
             });
 
         if (btnNext) {
@@ -400,12 +404,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }).join('');
     }
 
-    // 5단 슬라이더 초기화 (각각 다른 카테고리 적용)
+    // 5단 슬라이더 초기화
     setupModule5('module-products-5', p => p.item === "싱글몰트위스키");
-    setupModule5('module-products-5-1', p => ["스킨케어", "메이크업", "향수/바디/헤어"].includes(p.category));
-    setupModule5('module-products-5-2', p => ["가방/신발/잡화", "시계/쥬얼리", "의류/아이웨어"].includes(p.category));
+    setupModule5('module-products-5-1', p => ['스킨케어', '메이크업', '향수/바디/헤어'].includes(p.category));
+    setupModule5('module-products-5-2', p => ['가방/신발/잡화', '시계/쥬얼리', '의류/아이웨어'].includes(p.category));
     setupModule5('module-products-5-3', p => p.category === "디지털/리빙");
     setupModule5('module-products-5-4', p => p.category === "식품");
+    
+    // 추가 섹션 5: 리뷰 많은 순 (내림차순 정렬)
+    setupModule5('module-products-5-5', () => true, (products) => {
+        return products.sort((a, b) => parseInt(b.review_count || 0) - parseInt(a.review_count || 0)).slice(0, 15);
+    });
+
+    // 추가 섹션 6: 립 & 치크 (서브 카테고리 필터링)
+    setupModule5('module-products-5-6', p => p.sub_category === "립&치크");
 
     // 7. 브랜드 행사 슬라이더
     const eventList = document.querySelector('.brand-event-list');
@@ -604,4 +616,178 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
     startTimer();
+
+    // 10. 신라 Only 섹션 로직
+    const shillaTabBtns = document.querySelectorAll('.btn-shilla-tab');
+    const shillaProductList = document.querySelector('.shilla-product-list');
+    const shillaBrandList = document.querySelector('.shilla-brand-list');
+    let shillaBrandData = [];
+
+    // 탭 전환
+    shillaTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            shillaTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            document.querySelectorAll('.shilla-tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`shilla-tab-${btn.dataset.tab}`).classList.add('active');
+            
+            if (btn.dataset.tab === 'product') resetShillaProduct(); else resetShillaBrand();
+        });
+    });
+
+    // 신라 Only 상품 데이터 로드 (이름에 [신라단독] 포함)
+    fetch('products.json').then(r => r.json()).then(data => {
+        const shillaOnlyProducts = data.products.filter(p => p.name.includes('[신라단독]'));
+        renderShillaProducts(shillaOnlyProducts);
+    });
+
+    // 신라 Only 브랜드 데이터 로드
+    fetch('shinlla_only_brand.json').then(r => r.json()).then(data => {
+        shillaBrandData = data.shilla_only_brand;
+        renderShillaBrands(shillaBrandData);
+    });
+
+    function renderShillaProducts(products) {
+        if (!shillaProductList) return;
+        shillaProductList.innerHTML = products.map(product => {
+            const discount = parseInt(product.price_discount);
+            const originalUsd = parseFloat(product.price_usd);
+            const finalUsd = Math.floor(originalUsd * (1 - discount / 100));
+            const finalKrw = Math.floor(finalUsd * 1496.00);
+            return `
+                <li class="shilla-product-item">
+                    <div class="shilla-product-card">
+                        <a href="index2.html" class="module-link">
+                            <div class="img-box">
+                                <img src="${product.img}" alt="${product.name}">
+                                <div class="img-overlay">
+                                    <div class="overlay-btns">
+                                        <button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button>
+                                        <button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button>
+                                        <button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-box">
+                                <p class="brand">${product.brand}</p>
+                                <p class="name">${product.name}</p>
+                                <div class="price-top">
+                                    <span class="discount">${discount}%</span>
+                                    <span class="original-price">$${originalUsd.toLocaleString()}</span>
+                                </div>
+                                <div class="price-bottom">
+                                    <span class="final-usd">$${finalUsd.toLocaleString()}</span>
+                                    <span class="final-krw">${finalKrw.toLocaleString()}원</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>`;
+        }).join('');
+    }
+
+    function renderShillaBrands(brands) {
+        if (!shillaBrandList) return;
+        shillaBrandList.innerHTML = brands.map(brand => `
+            <li class="shilla-brand-item">
+                <div class="shilla-brand-card">
+                    <div class="img-box">
+                        <img src="${brand.file}" alt="${brand.content}">
+                    </div>
+                    <div class="info-box">
+                        <p class="title">${brand.title}</p>
+                        <p class="desc">${brand.content}</p>
+                    </div>
+                </div>
+            </li>`).join('');
+    }
+
+    // 신라 Only 슬라이더 설정
+    const setupShillaSlider = (containerSelector, prevSelector, nextSelector, itemWidth) => {
+        const list = document.querySelector(containerSelector);
+        const btnPrev = document.querySelector(prevSelector);
+        const btnNext = document.querySelector(nextSelector);
+        if (!list) return () => {};
+
+        list.dataset.pos = 0;
+        const updateTransform = () => { list.style.transform = `translateX(-${list.dataset.pos}px)`; };
+
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                const max = list.scrollWidth - 1280;
+                let currentPos = parseInt(list.dataset.pos);
+                list.dataset.pos = Math.min(currentPos + itemWidth, Math.max(0, max));
+                updateTransform();
+            });
+        }
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                let currentPos = parseInt(list.dataset.pos);
+                list.dataset.pos = Math.max(currentPos - itemWidth, 0);
+                updateTransform();
+            });
+        }
+        return () => { list.dataset.pos = 0; updateTransform(); };
+    };
+
+    const resetShillaProduct = setupShillaSlider('.shilla-product-list', '#shilla-tab-product .btn-prev', '#shilla-tab-product .btn-next', 325);
+    const resetShillaBrand = setupShillaSlider('.shilla-brand-list', '#shilla-tab-brand .btn-prev', '#shilla-tab-brand .btn-next', 433);
+
+    // 11. 확장형 검색창 및 인기검색어 로직
+    const searchBox = document.querySelector('.search-box');
+    const searchInput = searchBox.querySelector('input');
+    const btnClearSearch = document.querySelector('.btn-clear-search');
+    const btnCloseSearch = document.querySelector('.btn-close-search');
+    const popularRankList = document.querySelector('.popular-rank-list');
+
+    // 인기검색어 데이터 (임시)
+    const popularSearches = [
+        "젠틀몬스터", "탬버린즈", "조말론", "에스티로더", "롱샴",
+        "구찌", "프라다", "디올", "입생로랑", "샤넬"
+    ];
+
+    function openSearch() {
+        searchBox.classList.add('expanded');
+        renderPopularSearches();
+    }
+
+    function closeSearch() {
+        searchBox.classList.remove('expanded');
+        searchInput.value = '';
+    }
+
+    function renderPopularSearches() {
+        if (!popularRankList) return;
+        popularRankList.innerHTML = popularSearches.map((text, idx) => `
+            <li>
+                <span class="rank-num">${idx + 1}</span>
+                <span class="rank-text">${text}</span>
+            </li>
+        `).join('');
+    }
+
+    searchInput.addEventListener('focus', openSearch);
+    
+    if (btnClearSearch) {
+        btnClearSearch.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchInput.value = '';
+            searchInput.focus();
+        });
+    }
+
+    if (btnCloseSearch) {
+        btnCloseSearch.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeSearch();
+        });
+    }
+
+    // 외부 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+        if (!searchBox.contains(e.target)) {
+            closeSearch();
+        }
+    });
 });

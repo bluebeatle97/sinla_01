@@ -722,6 +722,7 @@ header.fixed .brand_wrap {
     flex-shrink: 0;
 }
 
+/* 확장형 검색창 스타일 */
 .search-box {
     display: flex;
     align-items: center;
@@ -730,6 +731,16 @@ header.fixed .brand_wrap {
     padding: 0 45px 0 10px;
     border-bottom: 2px solid #222222;
     position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fff;
+    margin-left: auto; /* 왼쪽으로 늘어나게 함 */
+}
+
+.search-box.expanded {
+    width: 640px;
+    height: 50px;
+    padding: 0 80px 0 10px;
+    z-index: 1500;
 }
 
 .search-box input {
@@ -737,15 +748,38 @@ header.fixed .brand_wrap {
     outline: none;
     font-size: 15px;
     width: 100%;
-    color: #ccc;
-    padding: 0 45px 0 10px;
+    color: #222;
+    background: transparent;
 }
 
-.btn-search {
+.search-box input::placeholder {
+    color: #ccc;
+}
+
+.search-icons {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-clear-search {
+    display: none; /* 기본 비노출 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #999;
+}
+
+.search-box.expanded .btn-clear-search {
+    display: block;
+}
+
+.btn-search {
     background: none;
     border: none;
     cursor: pointer;
@@ -754,6 +788,87 @@ header.fixed .brand_wrap {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* 인기검색어 드롭다운 */
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: -10px; /* 오른쪽 끝 정렬로 변경 */
+    width: 660px;
+    height: 409px;
+    background: #fff;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    display: none; /* 기본 비노출 */
+    flex-direction: column;
+    z-index: 1400;
+}
+
+.search-box.expanded .search-dropdown {
+    display: flex;
+}
+
+.dropdown-inner {
+    padding: 46px 0 50px 30px; /* 좌측 여백 추가 */
+    flex: 1;
+}
+
+.dropdown-inner h3 {
+    width: 600px;
+    height: 24px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #222;
+}
+
+.popular-rank-list {
+    width: 600px;
+    height: 192px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; /* 2열 배치 가능하도록 */
+    gap: 12px 0;
+}
+
+.popular-rank-list li {
+    width: 300px; /* 2열 기준 */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.popular-rank-list li .rank-num {
+    width: 40px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #de3831;
+    text-align: left;
+}
+
+.popular-rank-list li .rank-text {
+    font-size: 16px;
+    color: #222;
+}
+
+.dropdown-footer {
+    width: 660px;
+    height: 50px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.btn-close-search {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
 }
 
 .user-actions {
@@ -1072,15 +1187,25 @@ header.fixed .brand_wrap {
     color: #111;
 }
 
-footer {
+#footer {
     width: 100%;
-    padding: 80px 0;
-    text-align: center;
-    background: #333 !important;
-    color: #fff;
-    position: relative;
-    clear: both;
-    margin-top: 0;
+    height: 359px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.footer-image-wrap {
+    width: 1280px;
+    height: 359px;
+}
+
+.footer-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* ========================================= */
@@ -1972,6 +2097,179 @@ footer {
     z-index: 20;
 }
 
+/* ========================================= */
+/* 신라 Only 섹션 스타일 */
+/* ========================================= */
+#shilla-only-section {
+    width: 100%;
+    height: 558px;
+    margin: 100px 0 0;
+    background-color: #fff;
+}
+
+.shilla-title-box {
+    width: 1280px;
+    height: 80px;
+    margin: 30px auto 0;
+    padding: 0 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.shilla-tabs {
+    display: flex;
+    height: 50px;
+    padding: 0 0 10px;
+    gap: 30px;
+    align-items: center;
+}
+
+.btn-shilla-tab {
+    position: relative;
+    padding: 0 10px 0 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-shilla-tab.active {
+    color: #000;
+}
+
+.btn-shilla-tab.active::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #de3831;
+    border-radius: 50%;
+}
+
+.shilla-content-wrap {
+    width: 1280px;
+}
+
+.shilla-tab-content {
+    display: none;
+}
+
+.shilla-tab-content.active {
+    display: block;
+}
+
+/* 신라 Only 상품 카드 (305*478) */
+.shilla-product-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.shilla-product-item {
+    flex: 0 0 305px;
+    list-style: none;
+}
+
+.shilla-product-card {
+    width: 305px;
+    height: 478px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.shilla-product-card .img-box {
+    width: 305px;
+    height: 305px;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+}
+
+.shilla-product-card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shilla-product-card .info-box {
+    width: 305px;
+    height: 153px;
+    padding: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* 신라 Only 브랜드 카드 (413*540) */
+.shilla-brand-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.shilla-brand-item {
+    flex: 0 0 413px;
+    list-style: none;
+}
+
+.shilla-brand-card {
+    width: 413px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.shilla-brand-card .img-box {
+    width: 413px;
+    height: 440px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.shilla-brand-card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shilla-brand-card .info-box {
+    width: 413px;
+    height: 45px;
+    padding: 0 10px;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.shilla-brand-card .info-box .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+}
+
+.shilla-brand-card .info-box .desc {
+    font-size: 15px;
+    color: #666;
+    margin: 8px 0 0;
+}
+
+/* 공용 슬라이더 래퍼들 (버튼 정렬용) */
+.shilla-slider-wrap,
+.shilla-brand-slider-wrap {
+    width: 1280px;
+    position: relative;
+}
+
 /* 호버 시 노출 및 스타일 */
 #main-icons:hover .btn-icon-nav,
 #module-products:hover .btn-module-nav,
@@ -1980,8 +2278,11 @@ footer {
 #module-products-5-2:hover .btn-module-nav-5,
 #module-products-5-3:hover .btn-module-nav-5,
 #module-products-5-4:hover .btn-module-nav-5,
+#module-products-5-5:hover .btn-module-nav-5,
+#module-products-5-6:hover .btn-module-nav-5,
 #mid-banner:hover .btn-event-nav,
-#today-special:hover .btn-module-nav {
+#today-special:hover .btn-module-nav,
+#shilla-only-section:hover .btn-module-nav {
     opacity: 1;
 }
 

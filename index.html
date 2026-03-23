@@ -121,11 +121,28 @@
                     </nav>
 
                     <div class="header-right">
-                        <div class="search-box">
-                            <input type="text" placeholder="젠틀몬스터 2026 신규 컬렉션">
-                            <button type="button" class="btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
+                        <div class="search-wrap">
+                            <div class="search-box">
+                                <input type="text" placeholder="젠틀몬스터 2026 신규 컬렉션">
+                                <div class="search-icons">
+                                    <button type="button" class="btn-clear-search"><i class="fa-solid fa-xmark"></i></button>
+                                    <button type="button" class="btn-search">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                                <!-- 실시간 인기검색어 드롭다운 -->
+                                <div class="search-dropdown">
+                                    <div class="dropdown-inner">
+                                        <h3>실시간 인기검색어</h3>
+                                        <ul class="popular-rank-list">
+                                            <!-- JS에서 데이터 렌더링 -->
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown-footer">
+                                        <button type="button" class="btn-close-search">닫기</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="user-actions">
                             <a href="#" class="btn-mypage"><i class="fa-regular fa-user"></i></a>
@@ -344,6 +361,47 @@
         </div>
     </section>
 
+    <!-- 신라 Only 섹션 -->
+    <section id="shilla-only-section">
+        <div class="container">
+            <div class="shilla-title-box">
+                <div class="shilla-tabs">
+                    <button type="button" class="btn-shilla-tab active" data-tab="product">신라Only 상품</button>
+                    <button type="button" class="btn-shilla-tab" data-tab="brand">신라Only 브랜드</button>
+                </div>
+                <a href="#" class="btn-more-benefit">더보기 <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="shilla-content-wrap">
+                <!-- 신라 Only 상품 탭 -->
+                <div id="shilla-tab-product" class="shilla-tab-content active">
+                    <div class="shilla-slider-wrap">
+                        <div class="module-list-container">
+                            <ul class="shilla-product-list">
+                                <!-- JS에서 데이터 렌더링 -->
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-module-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="btn-module-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 신라 Only 브랜드 탭 -->
+                <div id="shilla-tab-brand" class="shilla-tab-content">
+                    <div class="shilla-brand-slider-wrap">
+                        <div class="module-list-container">
+                            <ul class="shilla-brand-list">
+                                <!-- JS에서 데이터 렌더링 -->
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-module-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="btn-module-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 복제 섹션 4 (맨 아래로 이동) -->
     <section id="module-products-5-4" class="module-products-5">
         <div class="container">
@@ -360,9 +418,41 @@
         </div>
     </section>
 
-    <footer id="footer">
+    <!-- 복제 섹션 5: 리뷰 많은 순 -->
+    <section id="module-products-5-5" class="module-products-5">
         <div class="container">
-            <p>&copy; 2026 Shopping Mall. All rights reserved.</p>
+            <div class="module-title-box">
+                <strong>실시간 베스트 리뷰 상품</strong>
+            </div>
+            <div class="module-slider-wrap">
+                <div class="module-list-container">
+                    <ul class="module-list-5"></ul>
+                </div>
+                <button type="button" class="btn-module-nav-5 btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="btn-module-nav-5 btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 복제 섹션 6: 립 & 치크 -->
+    <section id="module-products-5-6" class="module-products-5">
+        <div class="container">
+            <div class="module-title-box">
+                <strong>생기를 더해주는 립 & 치크</strong>
+            </div>
+            <div class="module-slider-wrap">
+                <div class="module-list-container">
+                    <ul class="module-list-5"></ul>
+                </div>
+                <button type="button" class="btn-module-nav-5 btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="btn-module-nav-5 btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-image-wrap">
+            <img src="img/footer.png" alt="Footer Information">
         </div>
     </footer>
     <script src="js/script.js"></script>
