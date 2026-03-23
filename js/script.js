@@ -333,11 +333,9 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
-                // '싱글몰트위스키' 아이템 전체 필터링 후 랜덤 셔플
                 const whiskyProducts = data.products.filter(p => p.item === "싱글몰트위스키");
                 const shuffledWhisky = whiskyProducts.sort(() => 0.5 - Math.random());
                 const products5 = shuffledWhisky;
-                
                 renderModuleProducts5(products5);
             });
     }
@@ -401,4 +399,204 @@ document.addEventListener('DOMContentLoaded', function() {
             moduleList5.style.transform = `translateX(-${modScrollPos5}px)`;
         });
     }
+
+    // 7. 브랜드 행사 슬라이더
+    const eventList = document.querySelector('.brand-event-list');
+    const btnEventPrev = document.querySelector('#mid-banner .btn-prev');
+    const btnEventNext = document.querySelector('#mid-banner .btn-next');
+    let eventScrollPos = 0;
+    const eventItemWidth = 260; 
+
+    if (eventList) {
+        fetch('brand_event.json')
+            .then(response => response.json())
+            .then(data => {
+                eventList.innerHTML = data.brand_event.map(event => `
+                    <li class="brand-event-item">
+                        <div class="brand-event-card">
+                            <div class="img-box">
+                                <img src="${event.file}" alt="${event.title}">
+                                <div class="badge-gift">증정</div>
+                            </div>
+                            <div class="info-box">
+                                <p class="title">${event.title}</p>
+                                <p class="desc">${event.content}</p>
+                            </div>
+                        </div>
+                    </li>
+                `).join('');
+            });
+    }
+
+    if (btnEventNext) {
+        btnEventNext.addEventListener('click', () => {
+            const maxScrollEvent = eventList.scrollWidth - 1280;
+            eventScrollPos = Math.min(eventScrollPos + eventItemWidth, maxScrollEvent);
+            eventList.style.transform = `translateX(-${eventScrollPos}px)`;
+        });
+    }
+    if (btnEventPrev) {
+        btnEventPrev.addEventListener('click', () => {
+            eventScrollPos = Math.max(eventScrollPos - eventItemWidth, 0);
+            eventList.style.transform = `translateX(-${eventScrollPos}px)`;
+        });
+    }
+
+    // 8. 쇼핑 혜택 탭 및 슬라이더
+    const benefitList = document.querySelector('.benefit-list');
+    const tabButtons = document.querySelectorAll('.benefit-tab-box .btn-tab');
+    let benefitData = [];
+    let currentBenefitType = 'shopping';
+    let benefitScrollPos = 0;
+    let benefitInterval;
+
+    if (benefitList) {
+        fetch('shpping_benefit.json')
+            .then(response => response.json())
+            .then(data => {
+                benefitData = data.brand_event;
+                renderBenefits('shopping');
+                startBenefitAutoSlide();
+            });
+    }
+
+    function renderBenefits(type) {
+        if (!benefitList) return;
+        let filtered = (type === 'shopping') ? benefitData.slice(0, 2) : benefitData.slice(2, 8);
+        benefitList.innerHTML = filtered.map(item => `
+            <li class="benefit-item">
+                <div class="benefit-card">
+                    <div class="img-box"><img src="${item.file}" alt="${item.title}"></div>
+                    <div class="info-box"><p class="title">${item.title}</p><p class="desc">${item.content}</p></div>
+                </div>
+            </li>
+        `).join('');
+        benefitScrollPos = 0;
+        benefitList.style.transform = `translateX(0)`;
+    }
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderBenefits(btn.dataset.type);
+            clearInterval(benefitInterval);
+            startBenefitAutoSlide();
+        });
+    });
+
+    function startBenefitAutoSlide() {
+        benefitInterval = setInterval(() => {
+            const items = document.querySelectorAll('.benefit-item');
+            if (items.length <= 1) return;
+            const itemWidth = 433;
+            const maxScroll = benefitList.scrollWidth - 1280;
+            benefitScrollPos = (benefitScrollPos >= maxScroll) ? 0 : benefitScrollPos + itemWidth;
+            benefitList.style.transform = `translateX(-${benefitScrollPos}px)`;
+        }, 5000);
+    }
+
+    // 9. 오늘의 특가 & 핫세일 로직
+    const specialTabBtns = document.querySelectorAll('.btn-special-tab');
+    const specialProductList = document.querySelector('.special-product-list');
+    const hotsaleProductList = document.querySelector('.hotsale-product-list');
+    const categoryBtnWrapper = document.querySelector('.category-btn-wrapper');
+    const specialBg = document.querySelector('.special-content-bg');
+    let allProducts = [];
+
+    // 9-4. 공통 슬라이더 설정 함수 (위치 리셋 기능 포함)
+    const setupSlider = (containerSelector, prevSelector, nextSelector) => {
+        const list = document.querySelector(containerSelector);
+        const btnPrev = document.querySelector(prevSelector);
+        const btnNext = document.querySelector(nextSelector);
+        if (!list) return () => {};
+
+        list.dataset.pos = 0;
+        const updateTransform = () => { list.style.transform = `translateX(-${list.dataset.pos}px)`; };
+
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                const max = list.scrollWidth - 1280;
+                let currentPos = parseInt(list.dataset.pos);
+                list.dataset.pos = Math.min(currentPos + 325, Math.max(0, max));
+                updateTransform();
+            });
+        }
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                let currentPos = parseInt(list.dataset.pos);
+                list.dataset.pos = Math.max(currentPos - 325, 0);
+                updateTransform();
+            });
+        }
+        return () => { list.dataset.pos = 0; updateTransform(); };
+    };
+
+    const resetSpecial = setupSlider('.special-product-list', '#tab-special .btn-prev', '#tab-special .btn-next');
+    const resetHotSale = setupSlider('.hotsale-product-list', '#tab-hotsale .btn-prev', '#tab-hotsale .btn-next');
+
+    specialTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            specialTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+            
+            // 672px을 기준으로 동적 높이 변경
+            if (btn.dataset.tab === 'special') {
+                specialBg.style.minHeight = '672px';
+                resetSpecial();
+            } else {
+                specialBg.style.minHeight = '740px';
+                resetHotSale();
+            }
+        });
+    });
+
+    fetch('products.json').then(r => r.json()).then(data => {
+        allProducts = data.products;
+        const sorted = [...allProducts].sort((a, b) => parseInt(b.price_discount) - parseInt(a.price_discount));
+        renderProductList(specialProductList, sorted.slice(0, 12));
+        initHotSale();
+    });
+
+    function initHotSale() {
+        if (!categoryBtnWrapper) return;
+        const categories = ['추천', ...new Set(allProducts.map(p => p.category))];
+        categoryBtnWrapper.innerHTML = categories.map((cat, idx) => `<button type="button" class="btn-category ${idx === 0 ? 'active' : ''}" data-category="${cat}">${cat}</button>`).join('');
+        renderHotSale('추천');
+        categoryBtnWrapper.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-category')) {
+                document.querySelectorAll('.btn-category').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderHotSale(e.target.dataset.category);
+            }
+        });
+    }
+
+    function renderHotSale(category) {
+        let filtered = (category === '추천') ? [...allProducts].sort(() => 0.5 - Math.random()).slice(0, 12) : allProducts.filter(p => p.category === category);
+        renderProductList(hotsaleProductList, filtered);
+        if (resetHotSale) resetHotSale();
+    }
+
+    function renderProductList(container, products) {
+        container.innerHTML = products.map(product => {
+            const discount = parseInt(product.price_discount);
+            const originalUsd = parseFloat(product.price_usd);
+            const finalUsd = Math.floor(originalUsd * (1 - discount / 100));
+            const finalKrw = Math.floor(finalUsd * 1496.00);
+            return `<li class="module-item"><div class="module-card"><a href="index2.html" class="module-link"><div class="img-box"><img src="${product.img}" alt="${product.name}"><div class="img-overlay"><div class="overlay-btns"><button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button><button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button><button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button></div></div></div><div class="info-box"><p class="brand">${product.brand}</p><p class="name">${product.name}</p><div class="price-top"><span class="discount">${discount}%</span><span class="original-price">$${originalUsd.toLocaleString()}</span></div><div class="price-bottom"><span class="final-usd">$${finalUsd.toLocaleString()}</span><span class="final-krw">${finalKrw.toLocaleString()}원</span></div></div></a></div></li>`;
+        }).join('');
+    }
+
+    function startTimer() {
+        const timerEl = document.querySelector('.countdown');
+        if (!timerEl) return;
+        setInterval(() => {
+            const now = new Date();
+            timerEl.textContent = `${String(23 - now.getHours()).padStart(2, '0')}:${String(59 - now.getMinutes()).padStart(2, '0')}:${String(59 - now.getSeconds()).padStart(2, '0')}`;
+        }, 1000);
+    }
+    startTimer();
 });

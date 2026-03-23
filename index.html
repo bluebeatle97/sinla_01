@@ -179,11 +179,29 @@
             <div class="module-slider-wrap">
                 <div class="module-list-container">
                     <ul class="module-list">
-                        <!-- JS에서 10개의 카드가 <li> 형태로 렌더링됩니다 -->
+                        <!-- JS에서 데이터 렌더링 -->
                     </ul>
                 </div>
                 <button type="button" class="btn-module-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <button type="button" class="btn-module-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 중간 배너 섹션 (브랜드 행사) -->
+    <section id="mid-banner">
+        <div class="container">
+            <div class="module-title-box">
+                <strong>브랜드 행사</strong>
+            </div>
+            <div class="brand-event-slider-wrap">
+                <div class="brand-event-list-container">
+                    <ul class="brand-event-list">
+                        <!-- JS에서 데이터 렌더링 -->
+                    </ul>
+                </div>
+                <button type="button" class="btn-event-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="btn-event-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -201,6 +219,79 @@
                 </div>
                 <button type="button" class="btn-module-nav-5 btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
                 <button type="button" class="btn-module-nav-5 btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 쇼핑 혜택 섹션 -->
+    <section id="shopping-benefit">
+        <div class="container">
+            <div class="benefit-title-box">
+                <h2>고객님을 위한 쇼핑혜택</h2>
+                <a href="#" class="btn-more-benefit">더보기 <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="benefit-tab-box">
+                <button type="button" class="btn-tab active" data-type="shopping">쇼핑혜택</button>
+                <button type="button" class="btn-tab" data-type="branch">지점혜택</button>
+            </div>
+            <div class="benefit-slider-wrap">
+                <div class="benefit-list-container">
+                    <ul class="benefit-list">
+                        <!-- JS에서 데이터 렌더링 -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 오늘의 특가 / 핫세일 섹션 -->
+    <section id="today-special">
+        <div class="container">
+            <div class="special-menu-box">
+                <div class="tab-headers">
+                    <button type="button" class="btn-special-tab active" data-tab="special">오늘의특가</button>
+                    <button type="button" class="btn-special-tab" data-tab="hotsale">핫세일</button>
+                </div>
+                <a href="#" class="btn-more-benefit">더보기 <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+        
+        <div class="special-content-bg">
+            <div class="container">
+                <!-- 오늘의 특가 컨텐츠 -->
+                <div id="tab-special" class="tab-content active">
+                    <div class="timer-box">
+                        <i class="fa-regular fa-clock clock-icon"></i>
+                        <span class="countdown">24:00:00</span>
+                    </div>
+                    <div class="special-slider-wrap">
+                        <div class="module-list-container">
+                            <ul class="special-product-list module-list">
+                                <!-- JS에서 데이터 렌더링 -->
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-module-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="btn-module-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 핫세일 컨텐츠 -->
+                <div id="tab-hotsale" class="tab-content">
+                    <div class="category-btn-box">
+                        <div class="category-btn-wrapper">
+                            <!-- JS에서 카테고리 버튼 동적 생성 -->
+                        </div>
+                    </div>
+                    <div class="hotsale-slider-wrap">
+                        <div class="module-list-container">
+                            <ul class="hotsale-product-list module-list">
+                                <!-- JS에서 데이터 렌더링 -->
+                            </ul>
+                        </div>
+                        <button type="button" class="btn-module-nav btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="btn-module-nav btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
