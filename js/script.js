@@ -158,18 +158,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     return `
                         <li class="module-item">
                             <div class="module-card">
-                                <div class="img-box"><img src="${product.img}" alt="${product.name}"></div>
-                                <div class="info-box">
-                                    <p class="brand">${product.brand}</p>
-                                    <p class="name">${product.name}</p>
-                                    <div class="price-top">
-                                        <span class="discount">${discount}%</span>
-                                        <span class="original-price">$${originalUsd.toLocaleString()}</span>
+                                <a href="index2.html" class="module-link">
+                                    <div class="img-box">
+                                        <img src="${product.img}" alt="${product.name}">
+                                        <div class="img-overlay">
+                                            <div class="overlay-btns">
+                                                <button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button>
+                                                <button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button>
+                                                <button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="price-bottom">
-                                        <span class="final-usd">$${finalUsd.toLocaleString()}</span>
-                                        <span class="final-krw">${finalKrw.toLocaleString()}원</span>
+                                    <div class="info-box">
+                                        <p class="brand">${product.brand}</p>
+                                        <p class="name">${product.name}</p>
+                                        <div class="price-top">
+                                            <span class="discount">${discount}%</span>
+                                            <span class="original-price">$${originalUsd.toLocaleString()}</span>
+                                        </div>
+                                        <div class="price-bottom">
+                                            <span class="final-usd">$${finalUsd.toLocaleString()}</span>
+                                            <span class="final-krw">${finalKrw.toLocaleString()}원</span>
+                                        </div>
                                     </div>
+                                </a>
+                                <div class="review-box">
                                     <div class="review-row">
                                         <span class="star"><i class="fa-solid fa-star"></i></span>
                                         <span class="score">${product.review_scour}</span>
