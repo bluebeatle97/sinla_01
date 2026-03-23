@@ -1599,3 +1599,131 @@ footer {
 
 .btn-module-nav.btn-prev { left: -30px; }
 .btn-module-nav.btn-next { right: -30px; }
+
+/* ========================================= */
+/* 5단 상품 슬라이더 전용 스타일 */
+/* ========================================= */
+#module-products-5 {
+    width: 100%;
+    height: 467px; /* 4단보다 약간 작게 조절 가능 */
+    margin: 100px 0 0; /* 상하 간격 조절 */
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#module-products-5 .container {
+    width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.module-list-5 {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.module-item-5 {
+    flex: 0 0 240px; /* 5단 배열을 위한 240px 너비 */
+    list-style: none;
+}
+
+/* 5단 상품 카드 디자인 (너비 240px에 최적화) */
+.module-card-5 {
+    width: 240px;
+    height: 450px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.module-card-5 .img-box {
+    width: 240px;
+    height: 240px;
+    min-width: 240px;
+    min-height: 240px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.module-card-5 .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.module-card-5 .info-box {
+    width: 240px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.module-card-5 .info-box .brand {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.module-card-5 .info-box .name {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    height: 18px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.module-card-5 .info-box .price-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+.module-card-5 .info-box .discount {
+    font-size: 16px;
+    font-weight: 700;
+    color: #de3831;
+}
+
+.module-card-5 .info-box .final-usd {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 슬라이더 버튼 (5단 전용) */
+.btn-module-nav-5 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #eee;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+#module-products-5:hover .btn-module-nav-5 {
+    opacity: 1;
+}
+
+.btn-module-nav-5.btn-prev { left: -25px; }
+.btn-module-nav-5.btn-next { right: -25px; }
