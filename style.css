@@ -111,6 +111,10 @@ ul, li {
     z-index: 1000;
 }
 
+header.fixed .header-top {
+    display: none;
+}
+
 header.fixed .header-nav {
     position: fixed;
     top: 0;
