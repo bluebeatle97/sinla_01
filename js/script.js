@@ -119,26 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. 인기 상품 슬라이더
-    const popularList = document.querySelector('.popular-list');
-    if (popularList) {
-        fetch('popular_products.json').then(r => r.json()).then(data => {
-            popularList.innerHTML = data.products.map(product => `
-                <li class="popular-item">
-                    <div class="product-card">
-                        <div class="product-img"><img src="${product.img}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover;"></div>
-                        <div class="product-info">
-                            <p class="brand">${product.brand}</p>
-                            <p class="name">${product.name}</p>
-                            <p class="price">$${product.price_usd} <span>(${product.price_krw}원)</span></p>
-                        </div>
-                    </div>
-                </li>
-            `).join('');
-        });
-    }
-
-    // 4. 4단 프로덕트 추천 상품 (모듈형 슬라이더)
+    // 3. 4단 프로덕트 추천 상품 (모듈형 슬라이더)
     const moduleList = document.querySelector('.module-list');
     const btnModPrev = document.querySelector('#module-products .btn-prev');
     const btnModNext = document.querySelector('#module-products .btn-next');
