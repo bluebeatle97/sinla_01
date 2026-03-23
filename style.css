@@ -1270,3 +1270,202 @@ footer {
     background: #333 !important;
     color: #fff;
 }
+
+/* ========================================= */
+/* 4단 프로덕트 모듈형 섹션 (슬라이더) */
+/* ========================================= */
+#module-products {
+    width: 100%;
+    padding: 70px 0 100px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#module-products .container {
+    width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.module-title-box {
+    margin-bottom: 40px;
+}
+
+.module-title-box strong {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+}
+
+.module-slider-wrap {
+    position: relative;
+}
+
+.module-list-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.module-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.module-item {
+    flex-shrink: 0;
+    list-style: none;
+}
+
+/* 4단 프로덕트 모듈형 카드 (305*520) */
+.module-card {
+    width: 305px;
+    height: 520px;
+    padding: 0 0 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px; /* 카드 모서리 라운드 */
+    overflow: hidden; /* 자식 요소가 튀어나가지 않게 설정 */
+}
+
+.module-card .img-box {
+    width: 305px;
+    height: 305px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    border-radius: 20px; /* 이미지 영역 라운드 */
+}
+
+.module-card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.module-card .info-box {
+    width: 305px;
+    padding: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.module-card .info-box .brand {
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.module-card .info-box .name {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.4;
+    height: 21px; /* 1줄 높이 (15px * 1.4) */
+    display: block; /* 1줄 처리는 block이 더 안정적 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 말줄임표 적용 */
+    margin-bottom: 10px;
+}
+
+.module-card .info-box .price-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.module-card .info-box .discount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #de3831;
+}
+
+.module-card .info-box .original-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.module-card .info-box .price-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.module-card .info-box .final-usd {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+}
+
+.module-card .info-box .final-krw {
+    font-size: 14px;
+    color: #222;
+    font-weight: 400;
+}
+
+/* 5열: 별점 + 리뷰 수 */
+.module-card .info-box .review-row {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.module-card .info-box .review-row .star {
+    color: #ffb800;
+    font-size: 12px;
+}
+
+.module-card .info-box .review-row .score {
+    font-weight: 700;
+    color: #222;
+}
+
+.module-card .info-box .review-row .divider {
+    width: 1px;
+    height: 10px;
+    background-color: #ddd;
+}
+
+.module-card .info-box .review-row .count {
+    color: #999;
+}
+
+/* 슬라이더 버튼 */
+.btn-module-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px; /* 크기 약간 확대 */
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #eee;
+    /* border-radius 제거하여 네모나게 설정 */
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    opacity: 0; /* 평소엔 숨김 */
+}
+
+#module-products:hover .btn-module-nav {
+    opacity: 1; /* 섹션 호버 시 노출 */
+}
+
+.btn-module-nav:hover {
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-module-nav.btn-prev { left: -30px; }
+.btn-module-nav.btn-next { right: -30px; }
