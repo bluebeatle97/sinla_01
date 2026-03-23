@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
-                // 전체 상품 랜덤 셔플 후 최대 10개로 제한
                 const shuffledProducts = data.products.sort(() => 0.5 - Math.random());
                 const products = shuffledProducts.slice(0, 10);
                 
@@ -322,27 +321,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 6. 5단 프로덕트 인기 카테고리 상품 (모듈형 슬라이더)
-    const moduleList5 = document.querySelector('.module-list-5');
-    const btnModPrev5 = document.querySelector('#module-products-5 .btn-prev');
-    const btnModNext5 = document.querySelector('#module-products-5 .btn-next');
-    let modScrollPos5 = 0;
-    const modItemWidth5 = 260; // 카드(240) + 간격(20)
+    // 6. 5단 프로덕트 섹션 설정 함수
+    function setupModule5(sectionId, filterFn) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
 
-    if (moduleList5) {
+        const list = section.querySelector('.module-list-5');
+        const btnPrev = section.querySelector('.btn-prev');
+        const btnNext = section.querySelector('.btn-next');
+        let scrollPos = 0;
+        const itemWidth = 260;
+
         fetch('products.json')
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
-                const whiskyProducts = data.products.filter(p => p.item === "싱글몰트위스키");
-                const shuffledWhisky = whiskyProducts.sort(() => 0.5 - Math.random());
-                const products5 = shuffledWhisky;
-                renderModuleProducts5(products5);
+                const filtered = data.products.filter(filterFn);
+                const shuffled = filtered.sort(() => 0.5 - Math.random());
+                renderModuleProducts5(list, shuffled);
             });
+
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                const max = list.scrollWidth - 1280;
+                scrollPos = Math.min(scrollPos + itemWidth, Math.max(0, max));
+                list.style.transform = `translateX(-${scrollPos}px)`;
+            });
+        }
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                scrollPos = Math.max(scrollPos - itemWidth, 0);
+                list.style.transform = `translateX(-${scrollPos}px)`;
+            });
+        }
     }
 
-    function renderModuleProducts5(products) {
-        if (!moduleList5) return;
-        moduleList5.innerHTML = products.map(product => {
+    function renderModuleProducts5(container, products) {
+        container.innerHTML = products.map(product => {
             const discount = parseInt(product.price_discount);
             const originalUsd = parseFloat(product.price_usd);
             const finalUsd = Math.floor(originalUsd * (1 - discount / 100));
@@ -374,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                                 <div class="review-row">
                                     <i class="fa-solid fa-star star"></i>
-                                    <span class="score">${product.review_score || '0.0'}</span>
+                                    <span class="score">${product.review_scour || '0.0'}</span>
                                     <div class="divider"></div>
                                     <span class="count">(${product.review_count || '0'})</span>
                                 </div>
@@ -386,19 +400,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }).join('');
     }
 
-    if (btnModNext5) {
-        btnModNext5.addEventListener('click', () => {
-            const maxScroll5 = moduleList5.scrollWidth - 1280;
-            modScrollPos5 = Math.min(modScrollPos5 + modItemWidth5, maxScroll5);
-            moduleList5.style.transform = `translateX(-${modScrollPos5}px)`;
-        });
-    }
-    if (btnModPrev5) {
-        btnModPrev5.addEventListener('click', () => {
-            modScrollPos5 = Math.max(modScrollPos5 - modItemWidth5, 0);
-            moduleList5.style.transform = `translateX(-${modScrollPos5}px)`;
-        });
-    }
+    // 5단 슬라이더 초기화 (각각 다른 카테고리 적용)
+    setupModule5('module-products-5', p => p.item === "싱글몰트위스키");
+    setupModule5('module-products-5-1', p => ["스킨케어", "메이크업", "향수/바디/헤어"].includes(p.category));
+    setupModule5('module-products-5-2', p => ["가방/신발/잡화", "시계/쥬얼리", "의류/아이웨어"].includes(p.category));
+    setupModule5('module-products-5-3', p => p.category === "디지털/리빙");
+    setupModule5('module-products-5-4', p => p.category === "식품");
 
     // 7. 브랜드 행사 슬라이더
     const eventList = document.querySelector('.brand-event-list');
@@ -504,7 +511,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialBg = document.querySelector('.special-content-bg');
     let allProducts = [];
 
-    // 9-4. 공통 슬라이더 설정 함수 (위치 리셋 기능 포함)
     const setupSlider = (containerSelector, prevSelector, nextSelector) => {
         const list = document.querySelector(containerSelector);
         const btnPrev = document.querySelector(prevSelector);
@@ -542,7 +548,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
             
-            // 672px을 기준으로 동적 높이 변경
             if (btn.dataset.tab === 'special') {
                 specialBg.style.minHeight = '672px';
                 resetSpecial();

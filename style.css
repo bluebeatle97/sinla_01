@@ -1469,7 +1469,7 @@ footer {
 /* ========================================= */
 /* 5단 상품 슬라이더 전용 스타일 */
 /* ========================================= */
-#module-products-5 {
+.module-products-5 {
     width: 100%;
     height: 467px;
     margin: 100px 0 0;
@@ -1767,7 +1767,7 @@ footer {
 }
 
 /* 슬라이더 공통 네비게이션 버튼 스타일 */
-#module-products-5 .container {
+.module-products-5 .container {
     width: 1280px;
     margin: 0 auto;
     position: relative;
@@ -1976,6 +1976,10 @@ footer {
 #main-icons:hover .btn-icon-nav,
 #module-products:hover .btn-module-nav,
 #module-products-5:hover .btn-module-nav-5,
+#module-products-5-1:hover .btn-module-nav-5,
+#module-products-5-2:hover .btn-module-nav-5,
+#module-products-5-3:hover .btn-module-nav-5,
+#module-products-5-4:hover .btn-module-nav-5,
 #mid-banner:hover .btn-event-nav,
 #today-special:hover .btn-module-nav {
     opacity: 1;
