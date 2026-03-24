@@ -2312,3 +2312,68 @@ header.fixed .brand_wrap {
 /* 메인 아이콘 슬라이더 버튼 위치 미세 조정 (컨테이너 기준) */
 .icons-container .btn-icon-nav.btn-prev { left: calc(50% - 680px); }
 .icons-container .btn-icon-nav.btn-next { right: calc(50% - 680px); }
+
+/* --- ���� ���� ������ �����̾ƿ� --- */
+.product-counter-container {
+    width: 100%;
+    height: 837px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.product-counter {
+    width: 1280px;
+    height: 731px;
+    margin: 0 0 100px;
+    position: relative;
+}
+
+.category-divider {
+    width: 1280px;
+    height: 14px;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.product-purchase-box {
+    width: 1280px;
+    height: 737px;
+    margin: 0 0 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-image-box {
+    width: 540px;
+    height: 731px;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info-purchase {
+    width: 640px;
+    height: 657px;
+    padding: 0 0 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.info-inner .brand-name { font-size: 18px; font-weight: 700; text-decoration: underline; margin-bottom: 15px; cursor: pointer; }
+.info-inner .product-title { font-size: 26px; line-height: 1.4; margin-bottom: 30px; color: #222; }
+.info-inner .price-area { display: flex; align-items: baseline; gap: 10px; }
+.info-inner .discount-rate { font-size: 30px; color: #e62a22; font-weight: 700; }
+.info-inner .final-price { font-size: 30px; font-weight: 700; color: #222; }
+.info-inner .won-price { font-size: 16px; color: #666; }
+
