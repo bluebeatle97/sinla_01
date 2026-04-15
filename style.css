@@ -722,6 +722,12 @@ header.fixed .brand_wrap {
     flex-shrink: 0;
 }
 
+.search-wrap {
+    position: relative;
+    width: 260px;
+    height: 40px;
+}
+
 /* 확장형 검색창 스타일 */
 .search-box {
     display: flex;
@@ -730,10 +736,12 @@ header.fixed .brand_wrap {
     height: 40px;
     padding: 0 45px 0 10px;
     border-bottom: 2px solid #222222;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: #fff;
-    margin-left: auto; /* 왼쪽으로 늘어나게 함 */
 }
 
 .search-box.expanded {
@@ -1725,7 +1733,7 @@ header.fixed .brand_wrap {
 }
 
 .benefit-card .info-box .title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #222;
     white-space: nowrap;
@@ -1734,9 +1742,9 @@ header.fixed .brand_wrap {
 }
 
 .benefit-card .info-box .desc {
-    font-size: 15px;
+    font-size: 13px;
     color: #999999;
-    margin: 8px 0 0;
+    margin: 5px 0 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2350,7 +2358,7 @@ header.fixed .brand_wrap {
 
 .product-image-box {
     width: 540px;
-    height: 731px;
+    height: 540px;
     background: #f9f9f9;
     overflow: hidden;
 }
@@ -2377,3 +2385,146 @@ header.fixed .brand_wrap {
 .info-inner .final-price { font-size: 30px; font-weight: 700; color: #222; }
 .info-inner .won-price { font-size: 16px; color: #666; }
 
+.info-inner .review-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+}
+.info-inner .review-area .star { color: #222; font-size: 12px; }
+.info-inner .review-area .score { font-weight: 700; color: #222; }
+.info-inner .review-area .divider { width: 1px; height: 10px; background-color: #ddd; }
+.info-inner .review-area .count { color: #999; }
+
+.info-inner .original-price-area { margin-bottom: 5px; color: #999; font-size: 16px; }
+.info-inner .original-price-area del { text-decoration: line-through; margin-right: 5px; }
+
+/* 상세 페이지 추가 스타일 (혜택, 수량, 총금액, 버튼) */
+.benefit-info {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.benefit-info dl {
+    display: flex;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.benefit-info dt {
+    width: 100px;
+    color: #666;
+    font-weight: 500;
+}
+
+.benefit-info dd {
+    color: #222;
+}
+
+.quantity-box {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qty-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+}
+
+.qty-controls {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.qty-controls button {
+    width: 36px;
+    height: 36px;
+    background: #f9f9f9;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.qty-controls input {
+    width: 40px;
+    height: 36px;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+}
+
+.total-price-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+}
+
+.total-price {
+    font-size: 34px;
+    color: #e62a22;
+    font-weight: 700;
+}
+
+.action-btns {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cart-add, .btn-buy-now {
+    flex: 1;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cart-add {
+    background: #fff;
+    border: 1px solid #222;
+    color: #222;
+}
+
+.btn-cart-add:hover { background: #f9f9f9; }
+.btn-buy-now {
+    background: #222;
+    border: 1px solid #222;
+    color: #fff;
+}
+
+.btn-buy-now:hover { background: #000; }
+.btn-wish-add {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: border 0.2s;
+}
+.btn-wish-add:hover { border-color: #222; }

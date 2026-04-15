@@ -255,7 +255,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
-                const shuffledProducts = data.products.sort(() => 0.5 - Math.random());
+                const productsWithIdx = data.products.map((p, i) => ({...p, originalIdx: i}));
+                const shuffledProducts = productsWithIdx.sort(() => 0.5 - Math.random());
                 const products = shuffledProducts.slice(0, 10);
                 
                 moduleList.innerHTML = products.map(product => {
@@ -267,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return `
                         <li class="module-item">
                             <div class="module-card">
-                                <a href="index2.html" class="module-link">
+                                <a href="index2.html?idx=${product.originalIdx}" class="module-link">
                                     <div class="img-box">
                                         <img src="${product.img}" alt="${product.name}">
                                         <div class="img-overlay">
@@ -335,7 +336,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('products.json')
             .then(r => r.json())
             .then(data => {
-                let filtered = data.products.filter(filterFn);
+                const productsWithIdx = data.products.map((p, i) => ({...p, originalIdx: i}));
+                let filtered = productsWithIdx.filter(filterFn);
                 if (customSortFn) {
                     filtered = customSortFn(filtered);
                 } else {
@@ -369,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <li class="module-item-5">
                     <div class="module-card-5">
-                        <a href="index2.html" class="module-link">
+                        <a href="index2.html?idx=${product.originalIdx}" class="module-link">
                             <div class="img-box">
                                 <img src="${product.img}" alt="${product.name}">
                                 <div class="img-overlay">
@@ -571,7 +573,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     fetch('products.json').then(r => r.json()).then(data => {
-        allProducts = data.products;
+        allProducts = data.products.map((p, i) => ({...p, originalIdx: i}));
         const sorted = [...allProducts].sort((a, b) => parseInt(b.price_discount) - parseInt(a.price_discount));
         renderProductList(specialProductList, sorted.slice(0, 12));
         initHotSale();
@@ -603,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalUsd = parseFloat(product.price_usd);
             const finalUsd = Math.floor(originalUsd * (1 - discount / 100));
             const finalKrw = Math.floor(finalUsd * 1496.00);
-            return `<li class="module-item"><div class="module-card"><a href="index2.html" class="module-link"><div class="img-box"><img src="${product.img}" alt="${product.name}"><div class="img-overlay"><div class="overlay-btns"><button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button><button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button><button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button></div></div></div><div class="info-box"><p class="brand">${product.brand}</p><p class="name">${product.name}</p><div class="price-top"><span class="discount">${discount}%</span><span class="original-price">$${originalUsd.toLocaleString()}</span></div><div class="price-bottom"><span class="final-usd">$${finalUsd.toLocaleString()}</span><span class="final-krw">${finalKrw.toLocaleString()}원</span></div></div></a></div></li>`;
+            return `<li class="module-item"><div class="module-card"><a href="index2.html?idx=${product.originalIdx}" class="module-link"><div class="img-box"><img src="${product.img}" alt="${product.name}"><div class="img-overlay"><div class="overlay-btns"><button type="button" class="btn-wish"><i class="fa-regular fa-heart"></i></button><button type="button" class="btn-view"><i class="fa-regular fa-credit-card"></i></button><button type="button" class="btn-cart"><i class="fa-solid fa-cart-shopping"></i></button></div></div></div><div class="info-box"><p class="brand">${product.brand}</p><p class="name">${product.name}</p><div class="price-top"><span class="discount">${discount}%</span><span class="original-price">$${originalUsd.toLocaleString()}</span></div><div class="price-bottom"><span class="final-usd">$${finalUsd.toLocaleString()}</span><span class="final-krw">${finalKrw.toLocaleString()}원</span></div></div></a></div></li>`;
         }).join('');
     }
 
@@ -638,7 +640,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 신라 Only 상품 데이터 로드 (이름에 [신라단독] 포함)
     fetch('products.json').then(r => r.json()).then(data => {
-        const shillaOnlyProducts = data.products.filter(p => p.name.includes('[신라단독]'));
+        const productsWithIdx = data.products.map((p, i) => ({...p, originalIdx: i}));
+        const shillaOnlyProducts = productsWithIdx.filter(p => p.name.includes('[신라단독]'));
         renderShillaProducts(shillaOnlyProducts);
     });
 
@@ -658,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <li class="shilla-product-item">
                     <div class="shilla-product-card">
-                        <a href="index2.html" class="module-link">
+                        <a href="index2.html?idx=${product.originalIdx}" class="module-link">
                             <div class="img-box">
                                 <img src="${product.img}" alt="${product.name}">
                                 <div class="img-overlay">
@@ -790,4 +793,90 @@ document.addEventListener('DOMContentLoaded', function() {
             closeSearch();
         }
     });
+
+    // 12. 상품 상세 페이지 (index2.html) 데이터 동적 렌더링
+    const productDetailSection = document.getElementById('product-detail');
+    if (productDetailSection) {
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                // URL 파라미터에서 상품 인덱스(idx)를 가져옵니다. 없으면 기본값 0 (첫 번째 상품)
+                const urlParams = new URLSearchParams(window.location.search);
+                const idx = urlParams.get('idx') || 0;
+                const product = data.products[idx];
+
+                if (!product) return; // 상품이 없으면 종료
+
+                const categoryPath = document.querySelector('.category-path');
+                const productImg = document.querySelector('.product-image-box img');
+                const brandName = document.querySelector('.info-inner .brand-name');
+                const productTitle = document.querySelector('.info-inner .product-title');
+                const discountRate = document.querySelector('.info-inner .discount-rate');
+                const finalPrice = document.querySelector('.info-inner .final-price');
+                const wonPrice = document.querySelector('.info-inner .won-price');
+                const totalPrice = document.querySelector('.total-price-box .total-price');
+                const reviewScore = document.querySelector('.info-inner .review-area .score');
+                const reviewCount = document.querySelector('.info-inner .review-area .count');
+                const originalPriceArea = document.querySelector('.info-inner .original-price-area');
+                const originalUsdEl = document.querySelector('.info-inner .original-usd');
+                const originalKrwEl = document.querySelector('.info-inner .original-krw');
+
+                const exchangeRate = 1496.00; // 환율
+                const discount = parseInt(product.price_discount);
+                const originalUsd = parseFloat(product.price_usd);
+                const originalKrw = Math.floor(originalUsd * exchangeRate);
+                const calcFinalUsd = Math.floor(originalUsd * (1 - discount / 100));
+                const calcFinalKrw = Math.floor(calcFinalUsd * exchangeRate);
+
+                // 데이터 바인딩
+                if (categoryPath) categoryPath.innerHTML = `홈 &gt; ${product.category} &gt; ${product.sub_category}`;
+                if (productImg) {
+                    productImg.src = product.img;
+                    productImg.alt = product.name;
+                }
+                if (brandName) brandName.textContent = product.brand;
+                if (productTitle) productTitle.textContent = product.name;
+                
+                if (reviewScore) reviewScore.textContent = product.review_scour || '0';
+                if (reviewCount) reviewCount.textContent = `${product.review_count || '0'}건`;
+                
+                if (discount > 0) {
+                    if (discountRate) {
+                        discountRate.textContent = `${discount}%`;
+                        discountRate.style.display = 'inline-block';
+                    }
+                    if (originalPriceArea) originalPriceArea.style.display = 'block';
+                    if (originalUsdEl) originalUsdEl.textContent = `$${originalUsd.toLocaleString()}`;
+                    if (originalKrwEl) originalKrwEl.textContent = `(${originalKrw.toLocaleString()}원)`;
+                } else {
+                    if (discountRate) discountRate.style.display = 'none';
+                    if (originalPriceArea) originalPriceArea.style.display = 'none';
+                }
+                
+                if (finalPrice) finalPrice.textContent = `$${calcFinalUsd.toLocaleString()}`;
+                if (wonPrice) wonPrice.textContent = `(${calcFinalKrw.toLocaleString()}원)`;
+                if (totalPrice) totalPrice.textContent = `$${calcFinalUsd.toLocaleString()}`;
+
+                // 수량 증감에 따른 총 금액 계산 로직
+                const btnMinus = document.querySelector('.btn-minus');
+                const btnPlus = document.querySelector('.btn-plus');
+                const qtyInput = document.querySelector('.qty-input');
+                
+                if (btnMinus && btnPlus && qtyInput && totalPrice) {
+                    btnMinus.addEventListener('click', () => {
+                        let qty = parseInt(qtyInput.value);
+                        if (qty > 1) {
+                            qtyInput.value = qty - 1;
+                            totalPrice.textContent = `$${(calcFinalUsd * (qty - 1)).toLocaleString()}`;
+                        }
+                    });
+                    btnPlus.addEventListener('click', () => {
+                        let qty = parseInt(qtyInput.value);
+                        qtyInput.value = qty + 1;
+                        totalPrice.textContent = `$${(calcFinalUsd * (qty + 1)).toLocaleString()}`;
+                    });
+                }
+            })
+            .catch(error => console.error("상품 데이터를 불러오는 중 에러 발생:", error));
+    }
 });
