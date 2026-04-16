@@ -14,7 +14,7 @@
 - 개발 기간 : 26/03/18 ~ 26/03/25
 
 ## 🛠️ 기술 스택
-- Language : `html``css`,`JavaScript`
+- Language : `html`,`css`,`JavaScript`
 - Framework / Library:  `Axios`,`jQuery`
 - Tool :`VisualStudioCode`, `Figma`
 - ETC : `Git`, `Github`
@@ -32,7 +32,7 @@
 | <img src="./img/ppt/11.png" width="500"> |
 
 ## 🚀 개선사항
-</br>
+</br>git push origin main
 
 <b>1. 다양한 라이브러리 활용</b>: 슬라이드 로직을 바닐라 JS로 설계함, 다음 프로젝트에선 `Swiper` 같은 라이브러리를 적절하게 사용해볼 예정임.
 
