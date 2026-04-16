@@ -1,0 +1,12 @@
+## 🖼 Portfolio Slides
+![Slide 1](./img/ppt/1.png)
+![Slide 2](./img/ppt/2.png)
+![Slide 3](./img/ppt/3.png)
+![Slide 4](./img/ppt/4.png)
+![Slide 5](./img/ppt/5.png) 
+![Slide 6](./img/ppt/6.png) 
+![Slide 7](./img/ppt/7.png) 
+![Slide 8](./img/ppt/8.png) 
+![Slide 9](./img/ppt/9.png) 
+![Slide 10](./img/ppt/10.png) 
+![Slide 11](./img/ppt/11.png)
