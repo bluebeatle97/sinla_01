@@ -25,7 +25,7 @@
 
 | <img src="./img/ppt/1.png" width="500"> | <img src="./img/ppt/2.png" width="500"> |
 | :---: | :---: |
-| <img src=./img/ppt/3.png" width="500"> | <img src="./img/ppt/4.png" width="500"> |
+| <img src="./img/ppt/3.png" width="500"> | <img src="./img/ppt/4.png" width="500"> |
 | <img src="./img/ppt/5.png" width="500"> | <img src="./img/ppt/6.png" width="500"> |
 | <img src="./img/ppt/7.png" width="500"> | <img src="./img/ppt/8.png" width="500"> |
 | <img src="./img/ppt/9.png" width="500"> | <img src="./img/ppt/10.png" width="500"> |
